@@ -44,7 +44,7 @@ public class UngDungDocSoThanhChu {
             return str1;
         }else {
             if (number2 > 0) {
-                if (number2 == 1) {
+                if (number1 == 1) {
                     switch (number2) {
                         case 1:
                             str1 = "eleven";
