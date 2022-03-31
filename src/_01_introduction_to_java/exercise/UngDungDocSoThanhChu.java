@@ -38,7 +38,7 @@ public class UngDungDocSoThanhChu {
     }
 
     static String checkNumber2(int number1, int number2) {
-        String str1 = null;
+        String str1 = "";
         if (number1 == 0 && number2 == 0){
             str1 = "";
             return str1;
@@ -180,7 +180,7 @@ public class UngDungDocSoThanhChu {
             int num2 = (number / 10) % 10;
             int num3 = number % 10;
             System.out.print(checkNumber2(num2,num3));
-            //10-99
+            //11-99
         } else if (number >= 100 && number < 1000) {
             // 100 - 999
             int num1 = (number / 100) % 10;
