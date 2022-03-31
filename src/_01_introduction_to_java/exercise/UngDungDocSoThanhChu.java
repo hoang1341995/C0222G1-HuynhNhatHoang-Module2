@@ -3,197 +3,164 @@ package _01_introduction_to_java.exercise;
 import java.util.Scanner;
 
 public class UngDungDocSoThanhChu {
-    static String checkNumber(int value) {
-        String str1 = null;
-        switch (value) {
-            case 1:
-                str1 = "one";
-                break;
-            case 2:
-                str1 = "two";
-                break;
-            case 3:
-                str1 = "three";
-                break;
-            case 4:
-                str1 = "four";
-                break;
-            case 5:
-                str1 = "five";
-                break;
-            case 6:
-                str1 = "six";
-                break;
-            case 7:
-                str1 = "seven";
-                break;
-            case 8:
-                str1 = "eight";
-                break;
-            case 9:
-                str1 = "night";
-                break;
-        }
-        return str1;
-    }
-
-    static String checkNumber2(int number1, int number2) {
-        String str1 = "";
-        if (number1 == 0 && number2 == 0){
-            str1 = "";
-            return str1;
-        }else {
-            if (number2 > 0) {
-                if (number1 == 1) {
-                    switch (number2) {
-                        case 1:
-                            str1 = "eleven";
-                            break;
-                        case 2:
-                            str1 = "Twelve";
-                            break;
-                        case 3:
-                            str1 = "Thirteen";
-                            break;
-                        case 4:
-                            str1 = "Fourteen";
-                            break;
-                        case 5:
-                            str1 = "Fifteen";
-                            break;
-                        case 6:
-                            str1 = "Sixteen";
-                            break;
-                        case 7:
-                            str1 = "Seventeen";
-                            break;
-                        case 8:
-                            str1 = "Eighteen";
-                            break;
-                        case 9:
-                            str1 = "Nineteen";
-                            break;
-                    }
-                    return str1;
-                } else {
-                    switch (number1) {
-                        case 2:
-                            str1 = "twenty ";
-                            break;
-                        case 3:
-                            str1 = "thirty ";
-                            break;
-                        case 4:
-                            str1 = "forty ";
-                            break;
-                        case 5:
-                            str1 = "fifty ";
-                            break;
-                        case 6:
-                            str1 = "sixty ";
-                            break;
-                        case 7:
-                            str1 = "seventy ";
-                            break;
-                        case 8:
-                            str1 = "eighty ";
-                            break;
-                        case 9:
-                            str1 = "nighty ";
-                            break;
-                    }
-
-                }
-            } else {
-                switch (number1) {
-                    case 1:
-                        str1 = "ten";
-                        break;
-                    case 2:
-                        str1 = "twenty";
-                        break;
-                    case 3:
-                        str1 = "thirty";
-                        break;
-                    case 4:
-                        str1 = "forty";
-                        break;
-                    case 5:
-                        str1 = "fifty";
-                        break;
-                    case 6:
-                        str1 = "sixty";
-                        break;
-                    case 7:
-                        str1 = "seventy";
-                        break;
-                    case 8:
-                        str1 = "eighty";
-                        break;
-                    case 9:
-                        str1 = "nighty";
-                        break;
-                }
-                return str1;
-            }
-        }
-        switch (number2) {
-            case 1:
-                str1 += "one";
-                break;
-            case 2:
-                str1 += "two";
-                break;
-            case 3:
-                str1 += "three";
-                break;
-            case 4:
-                str1 += "four";
-                break;
-            case 5:
-                str1 += "five";
-                break;
-            case 6:
-                str1 += "six";
-                break;
-            case 7:
-                str1 += "seven";
-                break;
-            case 8:
-                str1 += "eight";
-                break;
-            case 9:
-                str1 += "night";
-                break;
-        }
-        return str1;
-    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a number");
-        int number = Integer.parseInt(scanner.nextLine());
-        if (number > 0 && number <= 10) {
-            int num3 = number % 10;
-            System.out.print(checkNumber(num3));
-        } else if (number >= 11 && number < 100) {
-            int num2 = (number / 10) % 10;
-            int num3 = number % 10;
-            System.out.print(checkNumber2(num2,num3));
-            //11-99
-        } else if (number >= 100 && number < 1000) {
-            // 100 - 999
-            int num1 = (number / 100) % 10;
-            int num2 = (number / 10) % 10;
-            int num3 = number % 10;
+        int number = scanner.nextInt();
+        int donvi = number % 10;
+        int chuc = number % 100 / 10;
+        int tram = number / 100;
 
-            System.out.print(checkNumber(num1) + " hundred " + checkNumber2(num2,num3));
-
+        if (number < 10 && number > 0) {
+            System.out.println(uint(donvi));
+        } else if (number < 20) {
+            System.out.println(dacBiet(number));
+        } else if (number < 100) {
+            System.out.println(dozen(chuc) + " " + uint(donvi));
+        } else if (number < 1000) {
+            System.out.println(hundred(tram) + " " + dozen(chuc) + " " + uint(donvi));
         } else {
             System.out.println("out of ability");
         }
 
+    }
 
+    public static String uint(int number) {
+        String str = "";
+        switch (number) {
+            case 1:
+                str += "one";
+                break;
+            case 2:
+                str += "two";
+                break;
+            case 3:
+                str += "three";
+                break;
+            case 4:
+                str += "four";
+                break;
+            case 5:
+                str += "five";
+                break;
+            case 6:
+                str += "six";
+                break;
+            case 7:
+                str += "seven";
+                break;
+            case 8:
+                str += "eight";
+                break;
+            case 9:
+                str += "nine";
+                break;
+        }
+        return str;
+    }
+
+    public static String dacBiet(int number) {
+        String str = "";
+        switch (number) {
+            case 10:
+                str += " ten";
+                break;
+            case 11:
+                str += " eleven";
+                break;
+            case 12:
+                str += " twelve";
+                break;
+            case 13:
+                str += " thirteen";
+                break;
+            case 14:
+                str += " fourteen";
+                break;
+            case 15:
+                str += " fifteen";
+                break;
+            case 16:
+                str += " sixteen";
+                break;
+            case 17:
+                str += " seventeen";
+                break;
+            case 18:
+                str += " eighteen";
+                break;
+            case 19:
+                str += " nineteen";
+                break;
+        }
+        return str;
+    }
+
+    public static String dozen(int number) {
+        String str = "";
+        switch (number) {
+
+            case 2:
+                str += "twenty";
+                break;
+            case 3:
+                str += "thirty";
+                break;
+            case 4:
+                str += "fourty";
+                break;
+            case 5:
+                str += "fifty";
+                break;
+            case 6:
+                str += "sixty";
+                break;
+            case 7:
+                str += "seventy";
+                break;
+            case 8:
+                str += "eighty";
+                break;
+            case 9:
+                str += "ninety";
+                break;
+        }
+        return str;
+    }
+
+    public static String hundred(int number) {
+        String str = "";
+        switch (number) {
+            case 1:
+                str += "one hundred";
+                break;
+            case 2:
+                str += "two hundred";
+                break;
+            case 3:
+                str += "three hundred";
+                break;
+            case 4:
+                str += "four hundred";
+                break;
+            case 5:
+                str += "five hundred";
+                break;
+            case 6:
+                str += "six hundred";
+                break;
+            case 7:
+                str += "seven hundred";
+                break;
+            case 8:
+                str += "eight hundred";
+                break;
+            case 9:
+                str += "nine hundred";
+                break;
+        }
+        return str;
     }
 }
 
