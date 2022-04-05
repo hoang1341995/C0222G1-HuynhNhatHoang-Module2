@@ -12,7 +12,7 @@ public class ClassRectangular {
         }
 
         public double getArea() {
-            return this.width * this.height;
+            return (this.width * this.height)*Math.PI;
         }
 
         public double getPerimeter() {
