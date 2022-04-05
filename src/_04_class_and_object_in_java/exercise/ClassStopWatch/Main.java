@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Watch watch = new Watch();
-        int size = 100000;
+        int size = 10000;
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
             arr[i] = (int) (Math.random() * 100000);

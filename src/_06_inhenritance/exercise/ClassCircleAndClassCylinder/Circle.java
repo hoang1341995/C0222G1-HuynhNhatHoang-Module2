@@ -4,7 +4,7 @@ public class Circle{
     private double radius;
     private String color;
     public Circle(){
-        this(7,"black");
+        this(7.0,"black");
     }
     public Circle(double radius,String color){
         this.radius = radius;
