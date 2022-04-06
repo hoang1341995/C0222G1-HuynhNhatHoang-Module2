@@ -1,13 +1,13 @@
-package _06_inhenritance.exercise.ClassPointAndClassMoveablePoint;
+package _06_inhenritance.exercise.class_point_2d_and_class_point_3d;
 
-public class Point {
+public class Point2d {
     private float x, y;
 
-    public Point() {
+    Point2d() {
         this(0.0f, 0.0f);
     }
 
-    public Point(float x, float y) {
+    Point2d(float x, float y) {
         this.x = x;
         this.y = y;
     }
@@ -32,14 +32,15 @@ public class Point {
         setX(x);
         setY(y);
     }
-    public float[] getXY(){
-        float[] array = {getX(),getY()};
+
+    public float[] getXY() {
+        float[] array = {getX(), getY()};
         return array;
     }
 
     @Override
     public String toString() {
-        return "Point{" +
+        return "Point2d{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';

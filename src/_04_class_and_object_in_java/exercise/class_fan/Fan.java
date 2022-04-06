@@ -1,4 +1,4 @@
-package _04_class_and_object_in_java.exercise.ClassFan;
+package _04_class_and_object_in_java.exercise.class_fan;
 
 class Fan {
     private static final int SLOW = 1, MEDIUM = 2, FAST = 3;

@@ -1,4 +1,4 @@
-package _06_inhenritance.exercise.ClassTriangle;
+package _06_inhenritance.exercise.class_triangle;
 
 public class Main {
     public static void main(String[] args) {

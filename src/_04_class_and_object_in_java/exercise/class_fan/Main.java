@@ -1,4 +1,4 @@
-package _04_class_and_object_in_java.exercise.ClassFan;
+package _04_class_and_object_in_java.exercise.class_fan;
 
 public class Main {
     public static void main(String[] args) {

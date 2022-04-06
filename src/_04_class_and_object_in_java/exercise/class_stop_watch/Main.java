@@ -1,4 +1,4 @@
-package _04_class_and_object_in_java.exercise.ClassStopWatch;
+package _04_class_and_object_in_java.exercise.class_stop_watch;
 
 import java.util.Arrays;
 import java.util.Scanner;

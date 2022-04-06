@@ -1,4 +1,4 @@
-package _06_inhenritance.exercise.ClassPointAndClassMoveablePoint;
+package _06_inhenritance.exercise.class_point_and_class_moveable_point;
 
 public class Main {
     public static void main(String[] args) {

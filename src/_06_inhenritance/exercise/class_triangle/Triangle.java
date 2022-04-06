@@ -1,4 +1,4 @@
-package _06_inhenritance.exercise.ClassTriangle;
+package _06_inhenritance.exercise.class_triangle;
 
 public class Triangle extends Shape {
     private double side1, side2, side3;
