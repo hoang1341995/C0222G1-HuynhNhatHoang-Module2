@@ -1,6 +1,6 @@
 package _07_abstract_class_and_interface.exercise.colorable;
 
-public class Square extends Shape{
+public class Square extends Shape implements Colorable {
     private double side;
 
     public Square() {
@@ -28,11 +28,11 @@ public class Square extends Shape{
     public String toString() {
         return "Square{" +
                 "side=" + side +
-                super.toString()+
-                '}';
+                super.toString() + "}";
     }
+
     @Override
     public void howToColor() {
-        System.out.println("red");
+        System.out.println("Color all four sides");
     }
 }

@@ -1,10 +1,11 @@
 package _07_abstract_class_and_interface.exercise.colorable;
 
-public abstract class Shape implements Colorable {
-    private String color = "green";
-    private boolean filled = false;
+public class Shape {
+    private String color;
+    private boolean filled;
 
     public Shape() {
+        this("green", false);
     }
 
     public Shape(String color, boolean filled) {
