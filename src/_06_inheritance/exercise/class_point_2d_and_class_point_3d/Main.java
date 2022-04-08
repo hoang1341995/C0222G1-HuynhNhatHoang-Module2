@@ -1,4 +1,4 @@
-package _06_inhenritance.exercise.class_point_2d_and_class_point_3d;
+package _06_inheritance.exercise.class_point_2d_and_class_point_3d;
 
 public class Main {
     public static void main(String[] args) {

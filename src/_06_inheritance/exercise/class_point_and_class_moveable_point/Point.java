@@ -1,4 +1,4 @@
-package _06_inhenritance.exercise.class_point_and_class_moveable_point;
+package _06_inheritance.exercise.class_point_and_class_moveable_point;
 
 public class Point {
     private float x, y;

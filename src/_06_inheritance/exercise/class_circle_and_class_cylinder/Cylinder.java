@@ -1,4 +1,4 @@
-package _06_inhenritance.exercise.class_circle_and_class_cylinder;
+package _06_inheritance.exercise.class_circle_and_class_cylinder;
 
 public  class Cylinder extends Circle{
         private double height;

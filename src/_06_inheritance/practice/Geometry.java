@@ -1,4 +1,4 @@
-package _06_inhenritance.practice;
+package _06_inheritance.practice;
 
 public class Geometry {
     public static class Shape {
