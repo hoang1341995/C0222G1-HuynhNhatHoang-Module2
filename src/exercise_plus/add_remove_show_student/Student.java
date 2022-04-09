@@ -1,4 +1,4 @@
-package exercise_plus;
+package exercise_plus.add_remove_show_student;
 public class Student {
     private String name,address;
     private int age,point;

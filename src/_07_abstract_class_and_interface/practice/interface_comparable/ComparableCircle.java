@@ -1,6 +1,8 @@
 package _07_abstract_class_and_interface.practice.interface_comparable;
 
-public class ComparableCircle extends Circle implements Comparable<ComparableCircle> {
+import _06_inheritance.practice.Geometry;
+
+public class ComparableCircle extends Geometry.Circle implements Comparable<ComparableCircle> {
     public ComparableCircle() {
     }
 
@@ -9,7 +11,7 @@ public class ComparableCircle extends Circle implements Comparable<ComparableCir
     }
 
     public ComparableCircle(double radius, String color) {
-        super(radius, color);
+        super(radius, color,false);
     }
 
     @Override

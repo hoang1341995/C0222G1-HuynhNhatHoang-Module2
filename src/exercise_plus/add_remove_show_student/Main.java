@@ -1,4 +1,4 @@
-package exercise_plus;
+package exercise_plus.add_remove_show_student;
 
 import java.util.Scanner;
 
