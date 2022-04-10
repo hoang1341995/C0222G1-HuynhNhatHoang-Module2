@@ -1,7 +1,7 @@
 package _07_abstract_class_and_interface.exercise.colorable;
 
 
-public class Circle extends Shape{
+public class Circle extends Shape {
     private double radius;
 
     public Circle() {
@@ -12,7 +12,7 @@ public class Circle extends Shape{
         this.radius = radius;
     }
 
-    public Circle(double radius, String color, boolean filled) {
+    public Circle(String color, boolean filled, double radius) {
         super(color, filled);
         this.radius = radius;
     }
@@ -37,7 +37,10 @@ public class Circle extends Shape{
     public String toString() {
         return "radius{"
                 + getRadius()
-                + " Area= " + getArea() + " Primeter= " + getPerimeter()+"}";
+                + " Area= "
+                + getArea()
+                + " Primeter= "
+                + getPerimeter() + super.toString()+"}";
     }
 
 }

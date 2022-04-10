@@ -1,34 +1,30 @@
 package _07_abstract_class_and_interface.exercise.colorable;
 
-public class Square extends Shape implements Colorable {
-    private double side;
-
+public class Square extends Rectangle implements Colorable {
     public Square() {
-        this(2.0);
     }
 
     public Square(double side) {
-        this.side = side;
+        super(side, side);
     }
 
     public Square(String color, boolean filled, double side) {
-        super(color, filled);
-        this.side = side;
+        super(color, filled, side, side);
     }
-
     public double getSide() {
-        return side;
+        return getWidth();
     }
-
     public void setSide(double side) {
-        this.side = side;
+        setWidth(side);
+        setLength(side);
     }
 
     @Override
     public String toString() {
-        return "Square{" +
-                "side=" + side +
-                super.toString() + "}";
+        return "Square{"+
+                " side= "+
+                getSide()+
+                "}";
     }
 
     @Override

@@ -1,6 +1,6 @@
 package _07_abstract_class_and_interface.exercise.colorable;
 
-public class Shape {
+public abstract class Shape {
     private String color;
     private boolean filled;
 
@@ -28,6 +28,8 @@ public class Shape {
     public void setFilled(boolean filled) {
         this.filled = filled;
     }
+
+    public abstract double getArea();
 
     @Override
     public String toString() {
