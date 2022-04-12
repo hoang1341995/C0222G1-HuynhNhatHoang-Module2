@@ -151,7 +151,7 @@ public class Main {
         System.out.println("delete successful");
     }
     public static void chooseDelete(boolean choose){
-        // choose true = teacher, false = student
+        // choose true = teacher, fallpajs fse = student
         String option = "student";
         if (choose){
             option = "teacher";

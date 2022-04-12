@@ -3,6 +3,10 @@ package _08_clean_code_and_refactoring.exercise.tennis_game;
 public class TennisGame {
     public static final int ADVANTAGE = 1;
     public static final int WIN = 2;
+    public static final int ONE = 1;
+    public static final int TWO = 2;
+    public static final int THREE = 3;
+    public static final int REZO = 0;
     public static final int CONDITION = 4;
     public static String result;
     public static int temp;
@@ -28,16 +32,16 @@ public class TennisGame {
 
     public static String returnCompare(int temp) {
         switch (temp) {
-            case 0:
+            case REZO:
                 result = "Love-All";
                 break;
-            case 1:
+            case ONE:
                 result = "Fifteen-All";
                 break;
-            case 2:
+            case TWO:
                 result = "Thirty-All";
                 break;
-            case 3:
+            case THREE:
                 result = "Forty-All";
                 break;
             default:
@@ -56,16 +60,16 @@ public class TennisGame {
                 temp = player2;
             }
             switch (temp) {
-                case 0:
+                case REZO:
                     result += "Love";
                     break;
-                case 1:
+                case ONE:
                     result += "Fifteen";
                     break;
-                case 2:
+                case TWO:
                     result += "Thirty";
                     break;
-                case 3:
+                case THREE:
                     result += "Forty";
                     break;
             }
