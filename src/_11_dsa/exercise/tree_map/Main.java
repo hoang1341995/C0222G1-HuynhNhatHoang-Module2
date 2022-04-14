@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Enter String: ");
         String string = sc.nextLine().toLowerCase();
-        String[] newString = string.split(" ");
+        String[] newString = string.split(" "); /// huynh kim hieu
         int count = 1;
         TreeMap<String, Integer> treeMap = new TreeMap<>();
 
