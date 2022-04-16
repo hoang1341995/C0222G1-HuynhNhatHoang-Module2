@@ -46,7 +46,7 @@ public class ProductManagement {
                     ProductService.sortProduct();
                     break;
                 case 0:
-                System.exit(0);
+                    System.exit(0);
 
             }
         }

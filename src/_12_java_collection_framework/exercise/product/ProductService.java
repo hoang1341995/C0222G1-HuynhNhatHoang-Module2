@@ -1,6 +1,7 @@
 package _12_java_collection_framework.exercise.product;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Locale;
 
 import static _12_java_collection_framework.exercise.product.ProductManagement.list;
 import static _12_java_collection_framework.exercise.product.ProductManagement.sc;
@@ -79,17 +80,17 @@ public class ProductService {
     }
     public static void searchProductByName(){
         System.out.print("Nhập tên sản phẩm cần tìm: ");
-        String name = sc.nextLine();
+        String name = sc.nextLine().toLowerCase();
         boolean checkSearchByName = true;
         for (Product product:list){
-            if (product.getName().toLowerCase().equals(name.toLowerCase())){
-                System.out.println(product.toString());
+            if (product.getName().toLowerCase().contains(name)){
+                System.out.println(product.getName().toLowerCase().contains(name));
                 checkSearchByName = false;
                 break;
             }
         }
         if (checkSearchByName){
-            System.out.println("Tên sản phẩm không tồn tại trong danh sách");
+            System.out.println(false);
         }
     }
 

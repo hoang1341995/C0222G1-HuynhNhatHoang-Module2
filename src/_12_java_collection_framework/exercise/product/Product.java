@@ -1,6 +1,6 @@
 package _12_java_collection_framework.exercise.product;
 
-public class Product {
+public class Product<E> {
     private String name;
     private int id;
     private int price;
