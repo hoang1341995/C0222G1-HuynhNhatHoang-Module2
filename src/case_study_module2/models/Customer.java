@@ -7,7 +7,8 @@ public class Customer extends Person {
     public Customer() {
     }
 
-    public Customer(int id, String age, int idCard, int phoneNumber, String name, String email, String gender, String typeCustumer, String address) {
+    public Customer(int id, int age, int idCard, String phoneNumber, String name, String email, boolean gender,
+                    String typeCustumer, String address) {
         super(id, age, idCard, phoneNumber, name, email, gender);
         this.typeCustumer = typeCustumer;
         this.address = address;
@@ -40,12 +41,12 @@ public class Customer extends Person {
     }
 
     @Override
-    public String getAge() {
+    public int getAge() {
         return super.getAge();
     }
 
     @Override
-    public void setAge(String age) {
+    public void setAge(int age) {
         super.setAge(age);
     }
 
@@ -60,12 +61,12 @@ public class Customer extends Person {
     }
 
     @Override
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return super.getPhoneNumber();
     }
 
     @Override
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         super.setPhoneNumber(phoneNumber);
     }
 
@@ -90,12 +91,21 @@ public class Customer extends Person {
     }
 
     @Override
-    public String getGender() {
+    public boolean getGender() {
         return super.getGender();
     }
 
     @Override
-    public void setGender(String gender) {
+    public void setGender(boolean gender) {
         super.setGender(gender);
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                super.toString() +
+                " typeCustumer='" + typeCustumer + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }

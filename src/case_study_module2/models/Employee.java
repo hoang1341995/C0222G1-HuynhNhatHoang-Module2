@@ -9,7 +9,8 @@ public class Employee extends Person {
 
     }
 
-    public Employee(int id, String age, int idCard, int phoneNumber, String name, String email, String gender, String level, String position, int salary) {
+    public Employee(int id, int age, int idCard, String phoneNumber, String name, String email, boolean gender,
+                    String level, String position, int salary) {
         super(id, age, idCard, phoneNumber, name, email, gender);
         this.level = level;
         this.position = position;
@@ -51,12 +52,12 @@ public class Employee extends Person {
     }
 
     @Override
-    public String getAge() {
+    public int getAge() {
         return super.getAge();
     }
 
     @Override
-    public void setAge(String age) {
+    public void setAge(int age) {
         super.setAge(age);
     }
 
@@ -71,12 +72,12 @@ public class Employee extends Person {
     }
 
     @Override
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return super.getPhoneNumber();
     }
 
     @Override
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         super.setPhoneNumber(phoneNumber);
     }
 
@@ -101,12 +102,22 @@ public class Employee extends Person {
     }
 
     @Override
-    public String getGender() {
+    public boolean getGender() {
         return super.getGender();
     }
 
     @Override
-    public void setGender(String gender) {
+    public void setGender(boolean gender) {
         super.setGender(gender);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                super.toString()+
+                " level='" + level + '\'' +
+                ", position='" + position + '\'' +
+                ", salary=" + salary +
+                '}';
     }
 }

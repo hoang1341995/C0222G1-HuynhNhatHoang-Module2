@@ -1,4 +1,4 @@
-package _11_dsa.exercise.demerging;
+package _11_dsa.exercise.sort_employee_list;
 
 public class Person implements Comparable<Person> {
     private String name;

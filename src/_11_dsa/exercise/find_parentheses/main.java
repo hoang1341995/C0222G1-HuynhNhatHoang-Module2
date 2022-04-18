@@ -1,4 +1,4 @@
-package _11_dsa.exercise.bracket;
+package _11_dsa.exercise.find_parentheses;
 
 import java.util.Scanner;
 import java.util.Stack;

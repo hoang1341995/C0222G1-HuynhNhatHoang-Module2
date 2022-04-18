@@ -1,57 +1,37 @@
 package case_study_module2.models;
 
 public abstract class Facility {
-    private double price;
-    private double useArea;
-    private int maxPeople;
-    private int floor;
+    private String id;
     private String nameService;
+    private double useArea;
+    private double price;
+    private int maxPeople;
     private String rentalType;
-    private String roomStandard;
 
     public Facility() {
+
     }
 
-    public Facility(double price, double useArea, int maxPeople, int floor, String nameService, String rentalType, String roomStandard) {
-        this.price = price;
-        this.useArea = useArea;
-        this.maxPeople = maxPeople;
-        this.floor = floor;
+    public Facility(String id,
+                    String nameService,
+                    double useArea,
+                    double price,
+                    int maxPeople,
+                    String rentalType) {
+        this.id = id;
         this.nameService = nameService;
-        this.rentalType = rentalType;
-        this.roomStandard = roomStandard;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public double getUseArea() {
-        return useArea;
-    }
-
-    public void setUseArea(double useArea) {
         this.useArea = useArea;
-    }
-
-    public int getMaxPeople() {
-        return maxPeople;
-    }
-
-    public void setMaxPeople(int maxPeople) {
+        this.price = price;
         this.maxPeople = maxPeople;
+        this.rentalType = rentalType;
     }
 
-    public int getFloor() {
-        return floor;
+    public String getId() {
+        return id;
     }
 
-    public void setFloor(int floor) {
-        this.floor = floor;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNameService() {
@@ -62,6 +42,30 @@ public abstract class Facility {
         this.nameService = nameService;
     }
 
+    public double getUseArea() {
+        return useArea;
+    }
+
+    public void setUseArea(double useArea) {
+        this.useArea = useArea;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getMaxPeople() {
+        return maxPeople;
+    }
+
+    public void setMaxPeople(int maxPeople) {
+        this.maxPeople = maxPeople;
+    }
+
     public String getRentalType() {
         return rentalType;
     }
@@ -70,11 +74,13 @@ public abstract class Facility {
         this.rentalType = rentalType;
     }
 
-    public String getRoomStandard() {
-        return roomStandard;
-    }
-
-    public void setRoomStandard(String roomStandard) {
-        this.roomStandard = roomStandard;
+    @Override
+    public String toString() {
+        return "id='" + id + '\'' +
+                " nameService='" + nameService + '\'' +
+                ", useArea=" + useArea +
+                ", price=" + price +
+                ", maxPeople=" + maxPeople +
+                ", rentalType='" + rentalType + '\'';
     }
 }

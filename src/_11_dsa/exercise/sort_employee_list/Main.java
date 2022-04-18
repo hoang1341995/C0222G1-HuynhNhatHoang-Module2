@@ -1,13 +1,12 @@
-package _11_dsa.exercise.demerging;
+package _11_dsa.exercise.sort_employee_list;
 
-import java.rmi.Naming;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Main {
-    public static Queue<Person> NU = new LinkedList<>();
-    public static Queue<Person> NAM = new LinkedList<>();
+    public static Queue<Person> femade = new LinkedList<>();
+    public static Queue<Person> made = new LinkedList<>();
     public static void main(String[] args) {
         Person[] person = new Person[5];
         person[0] = new Person("Manh", 59, true);
@@ -18,15 +17,15 @@ public class Main {
         Arrays.sort(person);
         for (Person persons: person){
             if (persons.isGender()){
-                NAM.add(persons);
+                made.add(persons);
             }else{
-                NU.add(persons);
+                femade.add(persons);
             }
         }
-        for (Person persons: NU){
+        for (Person persons: femade){
             System.out.println(persons);
         }
-        for (Person persons: NAM){
+        for (Person persons: made){
             System.out.println(persons);
         }
 
