@@ -114,11 +114,11 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.print("Enter rental type: ");
         String rentalType = scanner.nextLine();
 
-        System.out.print("Enter room standard: ");
-        String roomStandard = scanner.nextLine();
+        System.out.print("Enter free service: ");
+        String freeService = scanner.nextLine();
 
         Room room = new Room(id, nameService, useArea, price,
-                maxPeople, rentalType, roomStandard);
+                maxPeople, rentalType, freeService);
         facilityIntegerMap.put(room, 0);
         System.out.println("Add new room successful");
 
