@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-        System.out.println("Nhập độ dài của mảng");
+        System.out.print("Nhập độ dài của mảng: ");
         int length = Integer.parseInt(sc.nextLine());
         int[] arrray = new int[length];
         for (int i = 0; i < arrray.length; i++) {
