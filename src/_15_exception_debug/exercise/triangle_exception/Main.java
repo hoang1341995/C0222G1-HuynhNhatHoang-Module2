@@ -19,31 +19,31 @@ public class Main {
 
     public static int tryCatch(String input, int num) {
         String str = input;
-        int[] arr;
         while (true) {
             try {
-                arr = new int[Integer.parseInt(str)];
-                return Integer.parseInt(str);
+                if (Integer.parseInt(str) <= 0) {
+                    throw new IllegalTriangleException("[Exception] cạnh phải lớn hơn 0 !");
+                } else {
+                    return Integer.parseInt(str);
+                }
             } catch (NumberFormatException e) {
-                System.out.println("[Exception] cạnh không phải là chữ !");
+                System.out.println("[Exception] cạnh phải là số !");
                 System.out.print("Nhập cạnh " + num + ": ");
                 str = sc.nextLine();
-            } catch (NegativeArraySizeException e ){
-                System.out.println("[Exception] cạnh không phải là số âm !");
+            } catch (IllegalTriangleException e) {
+                System.out.println(e.getMessage());
                 System.out.print("Nhập cạnh " + num + ": ");
                 str = sc.nextLine();
             }
         }
     }
 
-    public static void CheckTriangleSide(int side1, int side2, int side3) throws IllegalTriangleException {
-        if ((side1 + side2) < side3 || (side1 + side3) < side2 || (side2 + side3) < side1 ||
-                side1 > 0 || side2 > 0 || side3 > 0) {
+    public static void CheckTriangleSide(int side1, int side2, int side3) {
+        if ((side1 + side2) < side3 || (side1 + side3) < side2 || (side2 + side3) < side1) {
             try {
-
                 throw new IllegalTriangleException("[Exception] không phải là tam giác");
             } catch (IllegalTriangleException e) {
-                System.err.println("[Exception] không phải là tam giác");
+                System.err.println(e.getMessage());
             }
         } else {
             System.out.println("Là tam giác");
