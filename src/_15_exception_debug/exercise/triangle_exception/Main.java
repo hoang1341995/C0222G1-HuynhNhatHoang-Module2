@@ -19,11 +19,17 @@ public class Main {
 
     public static int tryCatch(String input, int num) {
         String str = input;
+        int[] arr;
         while (true) {
             try {
+                arr = new int[Integer.parseInt(str)];
                 return Integer.parseInt(str);
             } catch (NumberFormatException e) {
-                System.out.println("[Exception] Vui lòng nhập số !");
+                System.out.println("[Exception] cạnh không phải là chữ !");
+                System.out.print("Nhập cạnh " + num + ": ");
+                str = sc.nextLine();
+            } catch (NegativeArraySizeException e ){
+                System.out.println("[Exception] cạnh không phải là số âm !");
                 System.out.print("Nhập cạnh " + num + ": ");
                 str = sc.nextLine();
             }
@@ -32,7 +38,7 @@ public class Main {
 
     public static void CheckTriangleSide(int side1, int side2, int side3) throws IllegalTriangleException {
         if ((side1 + side2) < side3 || (side1 + side3) < side2 || (side2 + side3) < side1 ||
-             side1 > 0 || side2 > 0 || side3 > 0) {
+                side1 > 0 || side2 > 0 || side3 > 0) {
             try {
 
                 throw new IllegalTriangleException("[Exception] không phải là tam giác");
