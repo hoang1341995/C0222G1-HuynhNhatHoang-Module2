@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) throws CheckTriangleSide {
+    public static void main(String[] args) throws IllegalTriangleException {
 
         System.out.print("Nhập cạnh 1: ");
         int side1 = tryCatch(sc.nextLine(), 1);
@@ -13,14 +13,9 @@ public class Main {
         int side2 = tryCatch(sc.nextLine(), 2);
         System.out.print("Nhập cạnh 3: ");
         int side3 = tryCatch(sc.nextLine(), 3);
-        if ((side1 + side2) < side3 || (side1 + side3) < side2 || (side2 + side3) < side1) {
-            throw new CheckTriangleSide("[Exception] Tổng 2 cạnh nhỏ hơn cạnh còn lại");
-        } else {
-            System.out.println("Chuẩn tam giác");
-        }
+        CheckTriangleSide(side1, side2, side3);
 
     }
-
 
     public static int tryCatch(String input, int num) {
         String str = input;
@@ -32,6 +27,19 @@ public class Main {
                 System.out.print("Nhập cạnh " + num + ": ");
                 str = sc.nextLine();
             }
+        }
+    }
+
+    public static void CheckTriangleSide(int side1, int side2, int side3) throws IllegalTriangleException {
+        if ((side1 + side2) < side3 || (side1 + side3) < side2 || (side2 + side3) < side1) {
+            try {
+
+                throw new IllegalTriangleException("[Exception] Tổng 2 cạnh nhỏ hơn cạnh còn lại");
+            }catch (IllegalTriangleException e){
+                System.out.println("[Exception] Tổng 2 cạnh nhỏ hơn cạnh còn lại");
+            }
+        } else {
+            System.out.println("Là tam giác");
         }
     }
 }
