@@ -31,12 +31,13 @@ public class Main {
     }
 
     public static void CheckTriangleSide(int side1, int side2, int side3) throws IllegalTriangleException {
-        if ((side1 + side2) < side3 || (side1 + side3) < side2 || (side2 + side3) < side1) {
+        if ((side1 + side2) < side3 || (side1 + side3) < side2 || (side2 + side3) < side1 ||
+             side1 > 0 || side2 > 0 || side3 > 0) {
             try {
 
-                throw new IllegalTriangleException("[Exception] Tổng 2 cạnh nhỏ hơn cạnh còn lại");
-            }catch (IllegalTriangleException e){
-                System.out.println("[Exception] Tổng 2 cạnh nhỏ hơn cạnh còn lại");
+                throw new IllegalTriangleException("[Exception] không phải là tam giác");
+            } catch (IllegalTriangleException e) {
+                System.err.println("[Exception] không phải là tam giác");
             }
         } else {
             System.out.println("Là tam giác");
