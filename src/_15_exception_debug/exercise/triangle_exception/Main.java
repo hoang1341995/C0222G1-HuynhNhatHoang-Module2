@@ -8,11 +8,11 @@ public class Main {
     public static void main(String[] args) throws IllegalTriangleException {
 
         System.out.print("Nhập cạnh 1: ");
-        int side1 = tryCatch(sc.nextLine(), 1);
+        double side1 = tryCatch(sc.nextLine(), 1);
         System.out.print("Nhập cạnh 2: ");
-        int side2 = tryCatch(sc.nextLine(), 2);
+        double side2 = tryCatch(sc.nextLine(), 2);
         System.out.print("Nhập cạnh 3: ");
-        int side3 = tryCatch(sc.nextLine(), 3);
+        double side3 = tryCatch(sc.nextLine(), 3);
         CheckTriangleSide(side1, side2, side3);
 
     }
@@ -38,7 +38,7 @@ public class Main {
         }
     }
 
-    public static void CheckTriangleSide(int side1, int side2, int side3) {
+    public static void CheckTriangleSide(double side1, double side2, double side3) {
         if ((side1 + side2) < side3 || (side1 + side3) < side2 || (side2 + side3) < side1) {
             try {
                 throw new IllegalTriangleException("[Exception] không phải là tam giác");
