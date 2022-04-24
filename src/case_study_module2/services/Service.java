@@ -4,5 +4,4 @@ public interface Service {
     void addNew();
     void edit();
     void display();
-    void remove();
 }

@@ -1,23 +1,34 @@
 package case_study_module2.services.Impl;
 
-import case_study_module2.models.Facility;
-import case_study_module2.models.House;
-import case_study_module2.models.Room;
-import case_study_module2.models.Villa;
+
+import case_study_module2.models.facility.Facility;
 import case_study_module2.services.FacilityService;
+import case_study_module2.utils.ReadAndWrite;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 import static case_study_module2.controllers.FuramaController.scanner;
 
+
 public class FacilityServiceImpl implements FacilityService {
-    private static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
+
+    LinkedHashMap<Facility, Integer> villaList = ReadAndWrite.readFileFacility(ReadAndWrite.VILLA_FILE);
+    LinkedHashMap<Facility, Integer> houseList = ReadAndWrite.readFileFacility(ReadAndWrite.HOUSE_FILE);
+    LinkedHashMap<Facility, Integer> roomList = ReadAndWrite.readFileFacility(ReadAndWrite.ROOM_FILE);
 
     @Override
-    public void display() {
-        for (Map.Entry<Facility, Integer> elements : facilityIntegerMap.entrySet()) {
-            System.out.println("Service " + elements.getKey() + " Rent=" + elements.getValue());
+    public void displayFacility() {
+        System.out.println("<<Villa List>>");
+        for (Facility key : villaList.keySet()){
+            System.out.println(key + "" + villaList.get(key));
+        }
+        System.out.println("<<House List>>");
+        for (Facility key : houseList.keySet()){
+            System.out.println(key + "" + houseList.get(key));
+        }
+        System.out.println("<<Room List>>");
+        for (Facility key : roomList.keySet()){
+            System.out.println(key + "" + roomList.get(key));
         }
     }
 
@@ -27,100 +38,25 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     @Override
-    public void addNewVilla() {
-        System.out.print("Enter id: ");
-        String id = scanner.nextLine();
+    public void addFacility() {
+        System.out.println("<<Menu Service>>");
+        System.out.println("1. Villa\n" +
+                "2. House\n" +
+                "3. Room");
+        int choose = 0;
+        while (true){
+            try {
+                System.out.print("Choose service: ");
+                choose = Integer.parseInt(scanner.nextLine());
+                break;
+            }catch (NumberFormatException e){
+                System.err.println("Wrong format, please re-enter");
+            }
+        }
+        switch (choose){
+            case 1:
 
-        System.out.print("Enter name service: ");
-        String nameService = scanner.nextLine();
-
-        System.out.print("Enter use area: ");
-        double useArea = Double.parseDouble(scanner.nextLine());
-
-        System.out.print("Enter price: ");
-        double price = Double.parseDouble(scanner.nextLine());
-
-        System.out.print("Enter max people: ");
-        int maxPeople = Integer.parseInt(scanner.nextLine());
-
-        System.out.print("Enter rental type: ");
-        String rentalType = scanner.nextLine();
-
-        System.out.print("Enter room standard: ");
-        String roomStandard = scanner.nextLine();
-
-        System.out.print("Enter pool area: ");
-        double poolArea = Double.parseDouble(scanner.nextLine());
-
-        System.out.print("Enter floor: ");
-        int floor = Integer.parseInt(scanner.nextLine());
-
-        Villa villa = new Villa(id, nameService, useArea, price, maxPeople,
-                rentalType, roomStandard, poolArea, floor);
-        facilityIntegerMap.put(villa, 0); //
-        System.out.println("Add new villa successful");
-    }
-
-    @Override
-    public void addNewHouse() {
-        System.out.print("Enter id: ");
-        String id = scanner.nextLine();
-
-        System.out.print("Enter name service: ");
-        String nameService = scanner.nextLine();
-
-        System.out.print("Enter use area: ");
-        double useArea = Double.parseDouble(scanner.nextLine());
-
-        System.out.print("Enter price: ");
-        double price = Double.parseDouble(scanner.nextLine());
-
-        System.out.print("Enter max people: ");
-        int maxPeople = Integer.parseInt(scanner.nextLine());
-
-        System.out.print("Enter rental type: ");
-        String rentalType = scanner.nextLine();
-
-        System.out.print("Enter room standard: ");
-        String roomStandard = scanner.nextLine();
-
-        System.out.print("Enter floor: ");
-        int floor = Integer.parseInt(scanner.nextLine());
-
-        House house = new House(id, nameService, useArea, price,
-                maxPeople, rentalType, roomStandard, floor);
-        facilityIntegerMap.put(house, 0);
-        System.out.println("Add new house successful");
-    }
-
-    @Override
-    public void addNewRoom() {
-
-        System.out.print("Enter id: ");
-        String id = scanner.nextLine();
-
-        System.out.print("Enter name service: ");
-        String nameService = scanner.nextLine();
-
-        System.out.print("Enter use area: ");
-        double useArea = Double.parseDouble(scanner.nextLine());
-
-        System.out.print("Enter price: ");
-        double price = Double.parseDouble(scanner.nextLine());
-
-        System.out.print("Enter max people: ");
-        int maxPeople = Integer.parseInt(scanner.nextLine());
-
-        System.out.print("Enter rental type: ");
-        String rentalType = scanner.nextLine();
-
-        System.out.print("Enter free service: ");
-        String freeService = scanner.nextLine();
-
-        Room room = new Room(id, nameService, useArea, price,
-                maxPeople, rentalType, freeService);
-        facilityIntegerMap.put(room, 0);
-        System.out.println("Add new room successful");
-
+                break;
+        }
     }
 }

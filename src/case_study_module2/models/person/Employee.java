@@ -1,4 +1,4 @@
-package case_study_module2.models;
+package case_study_module2.models.person;
 
 public class Employee extends Person {
     private String level;
@@ -10,16 +10,16 @@ public class Employee extends Person {
     }
 
     public Employee(int id,
-                    int age,
-                    int idCard,
-                    String phoneNumber,
                     String name,
+                    String age,
+                    String gender,
+                    String idCard,
+                    String phoneNumber,
                     String email,
-                    boolean gender,
                     String level,
                     String position,
                     int salary) {
-        super(id, age, idCard, phoneNumber, name, email, gender);
+        super(id, name, age,gender, idCard, phoneNumber, email);
         this.level = level;
         this.position = position;
         this.salary = salary;
@@ -60,22 +60,22 @@ public class Employee extends Person {
     }
 
     @Override
-    public int getAge() {
+    public String getAge() {
         return super.getAge();
     }
 
     @Override
-    public void setAge(int age) {
+    public void setAge(String age) {
         super.setAge(age);
     }
 
     @Override
-    public int getIdCard() {
+    public String getIdCard() {
         return super.getIdCard();
     }
 
     @Override
-    public void setIdCard(int idCard) {
+    public void setIdCard(String idCard) {
         super.setIdCard(idCard);
     }
 
@@ -110,12 +110,12 @@ public class Employee extends Person {
     }
 
     @Override
-    public boolean getGender() {
+    public String getGender() {
         return super.getGender();
     }
 
     @Override
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         super.setGender(gender);
     }
 
@@ -127,5 +127,11 @@ public class Employee extends Person {
                 ", position='" + position + '\'' +
                 ", salary=" + salary +
                 '}';
+    }
+    public String toFile() {
+        return super.toFile()+
+                ","+getLevel()+
+                ","+getPosition()+
+                ","+getSalary();
     }
 }

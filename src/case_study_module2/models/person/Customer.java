@@ -1,4 +1,4 @@
-package case_study_module2.models;
+package case_study_module2.models.person;
 
 public class Customer extends Person {
     private String typeCustumer;
@@ -7,9 +7,16 @@ public class Customer extends Person {
     public Customer() {
     }
 
-    public Customer(int id, int age, int idCard, String phoneNumber, String name, String email, boolean gender,
-                    String typeCustumer, String address) {
-        super(id, age, idCard, phoneNumber, name, email, gender);
+    public Customer(int id,
+                    String name,
+                    String age,
+                    String gender,
+                    String idCard,
+                    String phoneNumber,
+                    String email,
+                    String typeCustumer,
+                    String address) {
+        super(id, name, age, gender, idCard, phoneNumber, email);
         this.typeCustumer = typeCustumer;
         this.address = address;
     }
@@ -41,22 +48,22 @@ public class Customer extends Person {
     }
 
     @Override
-    public int getAge() {
+    public String getAge() {
         return super.getAge();
     }
 
     @Override
-    public void setAge(int age) {
+    public void setAge(String age) {
         super.setAge(age);
     }
 
     @Override
-    public int getIdCard() {
+    public String getIdCard() {
         return super.getIdCard();
     }
 
     @Override
-    public void setIdCard(int idCard) {
+    public void setIdCard(String idCard) {
         super.setIdCard(idCard);
     }
 
@@ -91,12 +98,12 @@ public class Customer extends Person {
     }
 
     @Override
-    public boolean getGender() {
+    public String getGender() {
         return super.getGender();
     }
 
     @Override
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         super.setGender(gender);
     }
 
@@ -107,5 +114,10 @@ public class Customer extends Person {
                 " typeCustumer='" + typeCustumer + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+    public String toFile() {
+        return super.toFile()+
+                ","+getTypeCustumer()+
+                ","+getAddress();
     }
 }

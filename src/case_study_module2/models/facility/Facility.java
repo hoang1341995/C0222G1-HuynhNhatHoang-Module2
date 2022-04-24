@@ -1,4 +1,4 @@
-package case_study_module2.models;
+package case_study_module2.models.facility;
 
 public abstract class Facility {
     private String id;
@@ -82,5 +82,13 @@ public abstract class Facility {
                 ", price=" + price +
                 ", maxPeople=" + maxPeople +
                 ", rentalType='" + rentalType + '\'';
+    }
+    public String toFile(){
+        return getId()+
+                ","+getNameService()+
+                ","+getUseArea()+
+                ","+getPrice()+
+                ","+getMaxPeople()+
+                ","+getRentalType();
     }
 }

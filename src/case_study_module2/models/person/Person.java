@@ -1,25 +1,25 @@
-package case_study_module2.models;
+package case_study_module2.models.person;
 
 public abstract class Person {
     private int id;
-    private int age;
-    private int idCard;
+    private String age;
+    private String idCard;
     private String phoneNumber;
     private String name;
     private String email;
-    private boolean gender;
+    private String gender;
 
     public Person() {
     }
 
-    public Person(int id, int age, int idCard, String phoneNumber, String name, String email, boolean gender) {
+    public Person(int id , String name , String age , String gender, String idCard, String phoneNumber, String email) {
         this.id = id;
+        this.name = name;
         this.age = age;
+        this.gender = gender;
         this.idCard = idCard;
         this.phoneNumber = phoneNumber;
-        this.name = name;
         this.email = email;
-        this.gender = gender;
     }
 
     public int getId() {
@@ -30,19 +30,19 @@ public abstract class Person {
         this.id = id;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
-    public int getIdCard() {
+    public String getIdCard() {
         return idCard;
     }
 
-    public void setIdCard(int idCard) {
+    public void setIdCard(String idCard) {
         this.idCard = idCard;
     }
 
@@ -70,22 +70,31 @@ public abstract class Person {
         this.email = email;
     }
 
-    public boolean getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
     @Override
     public String toString() {
-        return "id=" + id +
-                ", age='" + age + '\'' +
-                ", idCard=" + idCard +
-                ", phoneNumber=" + phoneNumber +
+        return " id=" + id +
                 ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", gender='" + gender + '\'';
+                ", age='" + age + '\'' +
+                ", gender='" + gender + '\''+
+                ", idCard='" + idCard + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' ;
+    }
+    public String toFile() {
+        return getId()+
+                ","+getName()+
+                ","+getAge()+
+                ","+getGender()+
+                ","+getIdCard()+
+                ","+getPhoneNumber()+
+                ","+getEmail();
     }
 }
