@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static ArrayList<Country> countryMap = new ArrayList<>();
-
+    static Country country;
     public static void main(String[] args) throws IOException {
         System.out.println("Nhập đường dẫn: ");
         readFile(checkPathFile());
@@ -27,8 +27,7 @@ public class Main {
     }
 
     public static void makeData(int id, String code, String name) {
-
-        Country country = new Country(id, code, name);
+        country = new Country(id, code, name);
         countryMap.add(country);
     }
 
@@ -39,11 +38,11 @@ public class Main {
                 String path = sc.nextLine();
                 File file = new File(path);
                 if (!file.exists()) {
-                    throw new ExceptionCustom("File không tìm thấy");
+                    throw new FileExistException("File không tìm thấy");
                 } else {
                     return path;
                 }
-            } catch (ExceptionCustom e) {
+            } catch (FileExistException e) {
                 System.err.println(e.getMessage());
 
             }
