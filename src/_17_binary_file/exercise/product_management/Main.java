@@ -2,6 +2,8 @@ package _17_binary_file.exercise.product_management;
 
 import java.util.Scanner;
 
+import static _17_binary_file.exercise.product_management.ProductManager.PATH;
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -15,6 +17,7 @@ public class Main {
                     ProductManager.showList();
                     break;
                 case 2:
+                    ProductManager.readToFlie(PATH);
                     ProductManager.add();
                     break;
                 case 3:

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ProductManager {
-    private static final String PATH = "src/_17_binary_file/exercise/product_management/ProducFile";
+    public static final String PATH = "src/_17_binary_file/exercise/product_management/ProducFile";
     static Scanner sc = new Scanner(System.in);
     static List<Product> products = readToFlie(PATH);
 
