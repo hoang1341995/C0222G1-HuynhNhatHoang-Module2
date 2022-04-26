@@ -8,4 +8,10 @@ public interface FacilityService {
 
     void addFacility();
 
+    void addNewVilla();
+
+    void addNewHouse();
+
+    void addNewRoom();
+
 }

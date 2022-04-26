@@ -4,13 +4,11 @@ import case_study_module2.models.facility.Facility;
 import case_study_module2.models.facility.House;
 import case_study_module2.models.facility.Room;
 import case_study_module2.models.facility.Villa;
-import case_study_module2.models.person.Customer;
-import case_study_module2.models.person.Employee;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
+import java.util.List;
 
 public class ReadAndWrite {
     public static final String EMPLOYEE_FILE = "src/case_study_module2/data/employee.csv";
@@ -19,82 +17,34 @@ public class ReadAndWrite {
     public static final String ROOM_FILE = "src/case_study_module2/data/room.csv";
     public static final String HOUSE_FILE = "src/case_study_module2/data/house.csv";
 
-    public static ArrayList<Employee> readFileEmployee() {
-        ArrayList<Employee> employeeArrayList = new ArrayList<>();
+    public static List<String[]> readFile(String path) {
+        List<String[]> list = new ArrayList<>();
         try {
-            File file = new File(EMPLOYEE_FILE);
+            File file = new File(path);
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String line = "";
-            String[] employee;
+            String[] elements;
             while ((line = bufferedReader.readLine()) != null) {
-                employee = line.split(",");
-                employeeArrayList.add(new Employee(
-                        Integer.parseInt(employee[0]),
-                        employee[1],
-                        employee[2],
-                        employee[3],
-                        employee[4],
-                        employee[5],
-                        employee[6],
-                        employee[7],
-                        employee[8],
-                        Integer.parseInt(employee[9])));
+                elements = line.split(",");
+                list.add(elements);
             }
             bufferedReader.close();
+            return list;
         } catch (Exception e) {
-            System.err.println("[Read file employee] File not found");
+            System.err.println("[Read file] File not found");
         }
-        return employeeArrayList;
+        return list;
     }
 
-    public static void writeFileEmployee(Employee employee) {
+    public static void writeFile(String path, String toFile) {
         try {
-            FileWriter fileWriter = new FileWriter(EMPLOYEE_FILE, true);
+            FileWriter fileWriter = new FileWriter(path, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(employee.toFile());
+            bufferedWriter.write(toFile);
             bufferedWriter.newLine();
             bufferedWriter.close();
         } catch (IOException e) {
-            System.out.println("[Write file employee] File not found");
-        }
-    }
-
-    public static LinkedList<Customer> readFileCustomer() {
-        LinkedList<Customer> customerLinkedList = new LinkedList<>();
-        try {
-            File file = new File(CUSTOMER_FILE);
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            String line = "";
-            String[] customer;
-            while ((line = bufferedReader.readLine()) != null) {
-                customer = line.split(",");
-                customerLinkedList.add(new Customer(
-                        Integer.parseInt(customer[0]),
-                        customer[1],
-                        customer[2],
-                        customer[3],
-                        customer[4],
-                        customer[5],
-                        customer[6],
-                        customer[7],
-                        customer[8]));
-            }
-            bufferedReader.close();
-        } catch (Exception e) {
-            System.err.println("[Read file customer] File not found");
-        }
-        return customerLinkedList;
-    }
-
-    public static void writeFileCustomer(Customer customer) {
-        try {
-            FileWriter fileWriter = new FileWriter(CUSTOMER_FILE, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(customer.toFile());
-            bufferedWriter.newLine();
-            bufferedWriter.close();
-        } catch (IOException e) {
-            System.out.println("[Write file customer] File not found");
+            System.out.println("[Write file] File not found");
         }
     }
 
@@ -105,27 +55,59 @@ public class ReadAndWrite {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String line;
             String[] facility;
-            while ((line = bufferedReader.readLine()) != null){
+            while ((line = bufferedReader.readLine()) != null) {
                 facility = line.split(",");
-                if (path.equals(VILLA_FILE)){
-                    Villa newVilla = new Villa(facility[0],facility[1],Double.parseDouble(facility[2]),Double.parseDouble(facility[3]),
-                            Integer.parseInt(facility[4]),facility[5],facility[6],
-                            Double.parseDouble(facility[7]), Integer.parseInt(facility[8]));
-                    list.put(newVilla,0);
+                if (path.equals(VILLA_FILE)) {
+                    Villa newVilla = new Villa(facility[0],
+                            facility[1],
+                            Double.parseDouble(facility[2]),
+                            Double.parseDouble(facility[3]),
+                            Integer.parseInt(facility[4]),
+                            facility[5], facility[6],
+                            Double.parseDouble(facility[7]),
+                            Integer.parseInt(facility[8]));
+                    list.put(newVilla, 0);
                 } else if (path.equals(HOUSE_FILE)) {
-                    House newHouse = new House(facility[0],facility[1],Double.parseDouble(facility[2]),Double.parseDouble(facility[3]),
-                            Integer.parseInt(facility[4]),facility[5],facility[6],Integer.parseInt(facility[7]) );
-                }else{
-                    Room newRoom = new Room(facility[0],facility[1],Double.parseDouble(facility[2]),Double.parseDouble(facility[3]),
-                            Integer.parseInt(facility[4]),facility[5],facility[6]);
+                    House newHouse = new House(facility[0],
+                            facility[1],
+                            Double.parseDouble(facility[2]),
+                            Double.parseDouble(facility[3]),
+                            Integer.parseInt(facility[4]),
+                            facility[5],
+                            facility[6],
+                            Integer.parseInt(facility[7]));
+                    list.put(newHouse, 0);
+                } else {
+                    Room newRoom = new Room(facility[0],
+                            facility[1],
+                            Double.parseDouble(facility[2]),
+                            Double.parseDouble(facility[3]),
+                            Integer.parseInt(facility[4]),
+                            facility[5],
+                            facility[6]);
+                    list.put(newRoom,0);
                 }
             }
             bufferedReader.close();
 
-        }catch (IOException e) {
+        } catch (IOException e) {
             System.err.println("File not found");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.getMessage();
         }
         return list;
+    }
+
+    public static void writeFileFacility(String toFile, String path) {
+        try {
+            FileWriter fileWriter = new FileWriter(path, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(toFile);
+            bufferedWriter.newLine();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("[Write file facility] File not found");
+        }
     }
 
 }

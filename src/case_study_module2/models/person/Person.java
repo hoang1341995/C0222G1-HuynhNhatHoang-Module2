@@ -2,7 +2,7 @@ package case_study_module2.models.person;
 
 public abstract class Person {
     private int id;
-    private String age;
+    private String birthDay;
     private String idCard;
     private String phoneNumber;
     private String name;
@@ -12,10 +12,10 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(int id , String name , String age , String gender, String idCard, String phoneNumber, String email) {
+    public Person(int id , String name , String birthDay, String gender, String idCard, String phoneNumber, String email) {
         this.id = id;
         this.name = name;
-        this.age = age;
+        this.birthDay = birthDay;
         this.gender = gender;
         this.idCard = idCard;
         this.phoneNumber = phoneNumber;
@@ -30,12 +30,12 @@ public abstract class Person {
         this.id = id;
     }
 
-    public String getAge() {
-        return age;
+    public String getBirthDay() {
+        return birthDay;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
     }
 
     public String getIdCard() {
@@ -82,7 +82,7 @@ public abstract class Person {
     public String toString() {
         return " id=" + id +
                 ", name='" + name + '\'' +
-                ", age='" + age + '\'' +
+                ", birthDay='" + birthDay + '\'' +
                 ", gender='" + gender + '\''+
                 ", idCard='" + idCard + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
@@ -91,7 +91,7 @@ public abstract class Person {
     public String toFile() {
         return getId()+
                 ","+getName()+
-                ","+getAge()+
+                ","+ getBirthDay()+
                 ","+getGender()+
                 ","+getIdCard()+
                 ","+getPhoneNumber()+

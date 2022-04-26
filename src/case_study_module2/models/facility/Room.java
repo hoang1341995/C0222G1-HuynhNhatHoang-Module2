@@ -1,7 +1,7 @@
 package case_study_module2.models.facility;
 
 public class Room extends Facility {
-    private String freeService ;
+    private String freeService;
 
     public Room() {
     }
@@ -92,7 +92,7 @@ public class Room extends Facility {
                 " freeService='" + freeService + '\'' +
                 '}';
     }
-    public String getFile(){
+    public String toFile(){
         return super.toFile()+
                 ","+getFreeService();
     }

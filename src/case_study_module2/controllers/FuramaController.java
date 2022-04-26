@@ -1,6 +1,5 @@
 package case_study_module2.controllers;
 
-import case_study_module2.models.facility.Facility;
 import case_study_module2.services.Impl.CustomerServiceImpl;
 import case_study_module2.services.Impl.EmployeeServiceImpl;
 import case_study_module2.services.Impl.FacilityServiceImpl;

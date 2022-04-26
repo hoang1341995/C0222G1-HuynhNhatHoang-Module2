@@ -9,14 +9,14 @@ public class Customer extends Person {
 
     public Customer(int id,
                     String name,
-                    String age,
+                    String birthDay,
                     String gender,
                     String idCard,
                     String phoneNumber,
                     String email,
                     String typeCustumer,
                     String address) {
-        super(id, name, age, gender, idCard, phoneNumber, email);
+        super(id, name, birthDay, gender, idCard, phoneNumber, email);
         this.typeCustumer = typeCustumer;
         this.address = address;
     }
@@ -48,13 +48,13 @@ public class Customer extends Person {
     }
 
     @Override
-    public String getAge() {
-        return super.getAge();
+    public String getBirthDay() {
+        return super.getBirthDay();
     }
 
     @Override
-    public void setAge(String age) {
-        super.setAge(age);
+    public void setBirthDay(String birthDay) {
+        super.setBirthDay(birthDay);
     }
 
     @Override
