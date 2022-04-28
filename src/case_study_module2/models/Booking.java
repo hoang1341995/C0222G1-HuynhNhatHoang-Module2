@@ -1,31 +1,44 @@
 package case_study_module2.models;
 
-import case_study_module2.models.facility.Facility;
-import case_study_module2.models.person.Customer;
 
 public class Booking {
-    private Integer idBooking;
+    private String idBooking;
     private String startDate;
     private String endDate;
-    private Customer customer;
-    private Facility facility;
+    private String customer;
+    private String facility;
+    private String typeService;
 
     public Booking() {
     }
 
-    public Booking(Integer idBooking, String startDate, String endDate, Customer customer, Facility facility) {
+    public Booking(String idBooking,
+                   String startDate,
+                   String endDate,
+                   String customer,
+                   String facility,
+                   String typeService) {
         this.idBooking = idBooking;
         this.startDate = startDate;
         this.endDate = endDate;
         this.customer = customer;
         this.facility = facility;
+        this.typeService = typeService;
     }
 
-    public Integer getIdBooking() {
+    public String getTypeService() {
+        return typeService;
+    }
+
+    public void setTypeService(String typeService) {
+        this.typeService = typeService;
+    }
+
+    public String getIdBooking() {
         return idBooking;
     }
 
-    public void setIdBooking(Integer idBooking) {
+    public void setIdBooking(String idBooking) {
         this.idBooking = idBooking;
     }
 
@@ -45,19 +58,19 @@ public class Booking {
         this.endDate = endDate;
     }
 
-    public Customer getCustomer() {
+    public String getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(String customer) {
         this.customer = customer;
     }
 
-    public Facility getFacility() {
+    public String getFacility() {
         return facility;
     }
 
-    public void setFacility(Facility facility) {
+    public void setFacility(String facility) {
         this.facility = facility;
     }
 
@@ -69,6 +82,16 @@ public class Booking {
                 ", endDate='" + endDate + '\'' +
                 ", customer=" + customer +
                 ", facility=" + facility +
+                ", typeService=" + typeService +
                 '}';
+    }
+
+    public String toFile() {
+        return idBooking +
+                "," + startDate +
+                "," + endDate +
+                "," + customer +
+                "," + facility +
+                "," + typeService;
     }
 }

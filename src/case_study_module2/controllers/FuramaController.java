@@ -1,8 +1,9 @@
 package case_study_module2.controllers;
 
-import case_study_module2.services.Impl.CustomerServiceImpl;
-import case_study_module2.services.Impl.EmployeeServiceImpl;
-import case_study_module2.services.Impl.FacilityServiceImpl;
+import case_study_module2.services.impl.BookingServiceImpl;
+import case_study_module2.services.impl.CustomerServiceImpl;
+import case_study_module2.services.impl.EmployeeServiceImpl;
+import case_study_module2.services.impl.FacilityServiceImpl;
 
 import java.util.Scanner;
 
@@ -11,6 +12,7 @@ public class FuramaController {
     static EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
     static CustomerServiceImpl customerService = new CustomerServiceImpl();
     static FacilityServiceImpl facilityService = new FacilityServiceImpl();
+    static BookingServiceImpl bookingService = new BookingServiceImpl();
 
 
 
@@ -147,7 +149,7 @@ public class FuramaController {
                     facilityService.displayFacility();
                     break;
                 case 2:
-                    facilityService.addFacility();
+                    addNewFacilitySubMenu();
                     break;
                 case 3:
                     //displayFacilityMenu();
@@ -172,13 +174,13 @@ public class FuramaController {
 
             switch (Integer.parseInt(scanner.nextLine())) {
                 case 1:
-                    //facilityService.addNewVilla();
+                    facilityService.addNewVilla();
                     break;
                 case 2:
-                    //displayCustomerMenu();
+                    facilityService.addNewHouse();
                     break;
                 case 3:
-                    //displayFacilityMenu();
+                    facilityService.addNewRoom();
                     break;
                 case 4:
                     check = false;
@@ -201,10 +203,10 @@ public class FuramaController {
 
             switch (Integer.parseInt(scanner.nextLine())) {
                 case 1:
-                    //displayEmployeeMenu();
+                    bookingService.addBooking();
                     break;
                 case 2:
-                    //displayCustomerMenu();
+                    bookingService.displayListBooking();
                     break;
                 case 3:
                     //displayFacilityMenu();

@@ -1,4 +1,4 @@
-package case_study_module2.services.Impl;
+package case_study_module2.services.impl;
 
 import case_study_module2.models.person.Employee;
 import case_study_module2.services.EmployeeService;
@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,15 +23,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void addNew() {
         Employee employee = new Employee();
-        while (true) {
-            try {
-                System.out.print("Enter ID employee: ");
-                employee.setId(Integer.parseInt(scanner.nextLine()));
-                break;
-            } catch (Exception e) {
-                System.err.println("Wrong data type");
-            }
-        }
+        System.out.print("Enter ID employee: ");
+        employee.setId(RegexInput.returnOnlyNumber());
 
         System.out.print("Enter name employee: ");
 
@@ -71,15 +63,8 @@ public class EmployeeServiceImpl implements EmployeeService {
                 "6. Director");
         employee.setPosition(RegexInputEmployee.returnPositonEmployee());
 
-        while (true) {
-            try {
-                System.out.print("Enter salary employee: ");
-                employee.setSalary(Integer.parseInt(scanner.nextLine()));
-                break;
-            } catch (Exception e) {
-                System.err.println("Wrong data type");
-            }
-        }
+        System.out.print("Enter salary employee: ");
+        employee.setSalary(RegexInput.returnOnlyNumber());
 
         ReadAndWrite.writeFile(EMPLOYEE_FILE,employee.toFile());
         System.out.println("Add new employee successful");
@@ -90,15 +75,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void edit() {
         display();
         int idEdit = 0;
-        while (true) {
-            try {
-                System.out.print("Enter id of Employee you want edit: ");
-                idEdit = Integer.parseInt(scanner.nextLine());
-                break;
-            } catch (NumberFormatException e) {
-                System.err.println("Wrong, id must be number, please re-enter.");
-            }
-        }
+        System.out.print("Enter id of Employee you want edit: ");
+        idEdit = RegexInput.returnOnlyNumber();
         boolean check = true;
         for (Employee employees : employeeList) {
             if (idEdit == employees.getId()) {
@@ -168,16 +146,9 @@ public class EmployeeServiceImpl implements EmployeeService {
                         System.out.println("Edit position of employee successful");
                         break;
                     case 9:
-                        while (true){
-                            try {
-                                System.out.print("Enter new salary of Employee: ");
-                                employees.setSalary(Integer.parseInt(scanner.nextLine()));
-                                System.out.println("Edit salary of employee successful");
-                                break;
-                            }catch (NumberFormatException e){
-                                System.err.println("Wrong, please re-enter.");
-                            }
-                        }
+                        System.out.print("Enter new salary of Employee: ");
+                        employees.setSalary(RegexInput.returnOnlyNumber());
+                        System.out.println("Edit salary of employee successful");
                         break;
                 }
                 reWriteListEmployee();
@@ -214,10 +185,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
     }
+
     public  List<Employee> getListEmployee(){
         List<Employee> employeeList = new ArrayList<>();
         List<String[]> list = ReadAndWrite.readFile(EMPLOYEE_FILE);
-        System.out.println("<<Employee List>>");
         for (String[] lists : list) {
             employeeList.add(new Employee(
                     Integer.parseInt(lists[0]),

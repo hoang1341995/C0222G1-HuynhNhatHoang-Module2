@@ -1,4 +1,4 @@
-package case_study_module2.services.Impl;
+package case_study_module2.services.impl;
 
 import case_study_module2.models.facility.Facility;
 import case_study_module2.models.facility.House;
@@ -6,6 +6,7 @@ import case_study_module2.models.facility.Room;
 import case_study_module2.models.facility.Villa;
 import case_study_module2.services.FacilityService;
 import case_study_module2.utils.ReadAndWrite;
+import case_study_module2.utils.regex.RegexInput;
 
 import java.util.LinkedHashMap;
 
@@ -13,48 +14,15 @@ import static case_study_module2.controllers.FuramaController.scanner;
 import static case_study_module2.utils.ReadAndWrite.*;
 
 public class FacilityServiceImpl implements FacilityService {
+    LinkedHashMap<Facility, Integer> villaList = ReadAndWrite.readFileFacility(VILLA_FILE);
+    LinkedHashMap<Facility, Integer> houseList = ReadAndWrite.readFileFacility(HOUSE_FILE);
+    LinkedHashMap<Facility, Integer> roomList = ReadAndWrite.readFileFacility(ROOM_FILE);
 
     @Override
     public void displayFacility() {
-
-        System.out.println("<<Display Facility>>");
-        System.out.println("1. Villa list\n" +
-                "2. House list\n" +
-                "3. Room list");
-        int choose = 0;
-        while (true){
-            try {
-                System.out.print("Choose service: ");
-                choose = Integer.parseInt(scanner.nextLine());
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
-        switch (choose){
-            case 1:
-                displayOption(1);
-                break;
-            case 2:
-                displayOption(2);
-                break;
-            case 3:
-                displayOption(3);
-                break;
-        }
-    }
-
-    public void displayOption(int number){
-        LinkedHashMap<Facility, Integer> facility;
-        if (number == 1){
-            facility = ReadAndWrite.readFileFacility(VILLA_FILE);
-        } else if (number == 2) {
-            facility = ReadAndWrite.readFileFacility(HOUSE_FILE);
-        }else{
-            facility = ReadAndWrite.readFileFacility(ROOM_FILE);
-        }
-        for (Facility key : facility.keySet()){
-            System.out.println(key + " " + facility.get(key));
+        LinkedHashMap<String, Integer> facility = ReadAndWrite.readFileUsesOfFacility(FACILITY_FILE);
+        for (String key : facility.keySet()) {
+            System.out.println(key + " number of uses: " + facility.get(key));
         }
     }
 
@@ -63,41 +31,12 @@ public class FacilityServiceImpl implements FacilityService {
 
     }
 
-    @Override
-    public void addFacility() {
-        System.out.println("<<Menu Service>>");
-        System.out.println("1. Villa\n" +
-                "2. House\n" +
-                "3. Room");
-        int choose = 0;
-        while (true){
-            try {
-                System.out.print("Choose service: ");
-                choose = Integer.parseInt(scanner.nextLine());
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
-        switch (choose){
-            case 1:
-                addNewVilla();
-                break;
-            case 2:
-                addNewHouse();
-                break;
-            case 3:
-                addNewRoom();
-                break;
-        }
-
-    }
 
     @Override
     public void addNewVilla() {
         Villa villa = new Villa();
-        System.out.print("Enter id: ");
-        villa.setId(scanner.nextLine());
+        System.out.print("Enter id (SVVL): ");
+        villa.setId(RegexInput.returnIdFacility("villa"));
         System.out.print("Enter name service: ");
         villa.setNameService(scanner.nextLine());
         System.out.print("Enter use area: ");
@@ -150,14 +89,15 @@ public class FacilityServiceImpl implements FacilityService {
             }
         }
         ReadAndWrite.writeFileFacility(villa.toFile(),VILLA_FILE);
+        ReadAndWrite.writeFileUsesOfFacility(villa,FACILITY_FILE);
         System.out.println("Add new villa successful");
     }
 
     @Override
     public void addNewHouse() {
         House house = new House();
-        System.out.print("Enter id: ");
-        house.setId(scanner.nextLine());
+        System.out.print("Enter id (SVHO): ");
+        house.setId(RegexInput.returnIdFacility("house"));
         System.out.print("Enter name service: ");
         house.setNameService(scanner.nextLine());
         System.out.print("Enter use area: ");
@@ -202,13 +142,15 @@ public class FacilityServiceImpl implements FacilityService {
             }
         }
         ReadAndWrite.writeFileFacility(house.toFile(),HOUSE_FILE);
+        ReadAndWrite.writeFileUsesOfFacility(house,FACILITY_FILE);
+        System.out.println("Add new house successful");
     }
 
     @Override
     public void addNewRoom() {
         Room room = new Room();
-        System.out.print("Enter id: ");
-        room.setId(scanner.nextLine());
+        System.out.print("Enter id (SVRO): ");
+        room.setId(RegexInput.returnIdFacility("room"));
         System.out.print("Enter name service: ");
         room.setNameService(scanner.nextLine());
         System.out.print("Enter use area: ");
@@ -244,6 +186,8 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.print("Enter free service: ");
         room.setFreeService(scanner.nextLine());
         ReadAndWrite.writeFileFacility(room.toFile(),ROOM_FILE);
+        ReadAndWrite.writeFileUsesOfFacility(room,FACILITY_FILE);
+        System.out.println("Add new room successful");
 
     }
 }

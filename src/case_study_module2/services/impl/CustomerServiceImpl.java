@@ -1,8 +1,7 @@
-package case_study_module2.services.Impl;
+package case_study_module2.services.impl;
 
 import case_study_module2.models.person.Customer;
-import case_study_module2.models.person.Employee;
-import case_study_module2.services.Service;
+import case_study_module2.services.CustomerService;
 import case_study_module2.utils.ReadAndWrite;
 import case_study_module2.utils.regex.RegexInput;
 import case_study_module2.utils.regex.RegexInputCustomer;
@@ -17,21 +16,14 @@ import java.util.Scanner;
 
 import static case_study_module2.utils.ReadAndWrite.CUSTOMER_FILE;
 
-public class CustomerServiceImpl implements Service {
+public class CustomerServiceImpl implements CustomerService {
     private Scanner scanner = new Scanner(System.in);
     List<Customer> customerList = getListCustomer();
     @Override
     public void addNew() {
         Customer customer = new Customer();
-        while (true){
-            try {
-                System.out.print("Enter ID customer: ");
-                customer.setId(Integer.parseInt(scanner.nextLine()));
-                break;
-            }catch (Exception e){
-                System.err.println("Wrong data type");
-            }
-        }
+        System.out.print("Enter ID customer: ");
+        customer.setId(RegexInput.returnOnlyNumber());
 
         System.out.print("Enter name customer: ");
         customer.setName(scanner.nextLine());
@@ -72,15 +64,8 @@ public class CustomerServiceImpl implements Service {
     public void edit() {
         display();
         int idEdit = 0;
-        while (true) {
-            try {
-                System.out.print("Enter id of Customer you want edit: ");
-                idEdit = Integer.parseInt(scanner.nextLine());
-                break;
-            } catch (NumberFormatException e) {
-                System.err.println("Wrong, id must be number, please re-enter.");
-            }
-        }
+        System.out.print("Enter id of Customer you want edit: ");
+        idEdit = RegexInput.returnOnlyNumber();
         boolean check = true;
         for (Customer customers : customerList) {
             if (idEdit == customers.getId()) {
@@ -182,7 +167,7 @@ public class CustomerServiceImpl implements Service {
         }
 
     }
-    public  List<Customer> getListCustomer(){
+    public static List<Customer> getListCustomer(){
         List<Customer> customerList = new ArrayList<>();
         List<String[]> list = ReadAndWrite.readFile(CUSTOMER_FILE);
         for (String[] lists : list) {
