@@ -38,56 +38,21 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.print("Enter id (SVVL): ");
         villa.setId(RegexInput.returnIdFacility("villa"));
         System.out.print("Enter name service: ");
-        villa.setNameService(scanner.nextLine());
+        villa.setNameService(RegexInput.returnString());
         System.out.print("Enter use area: ");
-        while (true){
-            try {
-                villa.setUseArea(Double.parseDouble(scanner.nextLine()));
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
+        villa.setUseArea(RegexInput.returnOnlyNumber());
         System.out.print("Enter price: ");
-        while (true){
-            try {
-                villa.setPrice(Double.parseDouble(scanner.nextLine()));
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
+        villa.setPrice(RegexInput.returnPositiveNumber());
         System.out.print("Enter max people: ");
-        while (true){
-            try {
-                villa.setMaxPeople(Integer.parseInt(scanner.nextLine()));
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
+        villa.setMaxPeople(RegexInput.returnMaxPeople());
         System.out.print("Enter rental type: ");
-        villa.setRentalType(scanner.nextLine());
+        villa.setRentalType(RegexInput.returnString());
         System.out.print("Enter room standard: ");
-        villa.setRoomStandard(scanner.nextLine());
+        villa.setRoomStandard(RegexInput.returnString());
         System.out.print("Enter pool area: ");
-        while (true){
-            try {
-                villa.setPoolArea(Double.parseDouble(scanner.nextLine()));
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
+        villa.setPoolArea(RegexInput.returnPoolArea());
         System.out.print("Enter floor: ");
-        while (true){
-            try {
-                villa.setFloor(Integer.parseInt(scanner.nextLine()));
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
+        villa.setFloor(RegexInput.returnPositiveNumber());
         ReadAndWrite.writeFileFacility(villa.toFile(),VILLA_FILE);
         ReadAndWrite.writeFileUsesOfFacility(villa,FACILITY_FILE);
         System.out.println("Add new villa successful");
@@ -99,48 +64,20 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.print("Enter id (SVHO): ");
         house.setId(RegexInput.returnIdFacility("house"));
         System.out.print("Enter name service: ");
-        house.setNameService(scanner.nextLine());
+        house.setNameService(RegexInput.returnString());
         System.out.print("Enter use area: ");
-        while (true){
-            try {
-                house.setUseArea(Double.parseDouble(scanner.nextLine()));
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
+        house.setUseArea(RegexInput.returnOnlyNumber());
         System.out.print("Enter price: ");
-        while (true){
-            try {
-                house.setPrice(Double.parseDouble(scanner.nextLine()));
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
+        house.setPrice(RegexInput.returnPositiveNumber());
         System.out.print("Enter max people: ");
-        while (true){
-            try {
-                house.setMaxPeople(Integer.parseInt(scanner.nextLine()));
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
+        house.setMaxPeople(RegexInput.returnMaxPeople());
         System.out.print("Enter rental type: ");
-        house.setRentalType(scanner.nextLine());
+        house.setRentalType(RegexInput.returnString());
 
         System.out.print("Enter room standard: ");
-        house.setRoomStandard(scanner.nextLine());
+        house.setRoomStandard(RegexInput.returnString());
         System.out.print("Enter floor: ");
-        while (true){
-            try {
-                house.setFloor(Integer.parseInt(scanner.nextLine()));
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
+        house.setFloor(RegexInput.returnPositiveNumber());
         ReadAndWrite.writeFileFacility(house.toFile(),HOUSE_FILE);
         ReadAndWrite.writeFileUsesOfFacility(house,FACILITY_FILE);
         System.out.println("Add new house successful");
@@ -152,36 +89,15 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.print("Enter id (SVRO): ");
         room.setId(RegexInput.returnIdFacility("room"));
         System.out.print("Enter name service: ");
-        room.setNameService(scanner.nextLine());
+        room.setNameService(RegexInput.returnString());
         System.out.print("Enter use area: ");
-        while (true){
-            try {
-                room.setUseArea(Double.parseDouble(scanner.nextLine()));
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
+        room.setUseArea(RegexInput.returnOnlyNumber());
         System.out.print("Enter price: ");
-        while (true){
-            try {
-                room.setPrice(Double.parseDouble(scanner.nextLine()));
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
+        room.setPrice(RegexInput.returnPositiveNumber());
         System.out.print("Enter max people: ");
-        while (true){
-            try {
-                room.setMaxPeople(Integer.parseInt(scanner.nextLine()));
-                break;
-            }catch (NumberFormatException e){
-                System.err.println("Wrong format, please re-enter");
-            }
-        }
+        room.setMaxPeople(RegexInput.returnMaxPeople());
         System.out.print("Enter rental type: ");
-        room.setRentalType(scanner.nextLine());
+        room.setRentalType(RegexInput.returnString());
 
         System.out.print("Enter free service: ");
         room.setFreeService(scanner.nextLine());

@@ -108,7 +108,7 @@ public class ReadAndWrite {
             String line;
             String[] facility;
             while ((line = bufferedReader.readLine()) != null) {
-                facility = line.split("-");
+                facility = line.split("#"); ///{room}-0
                 list.put(facility[0], Integer.parseInt(facility[1]));
             }
             bufferedReader.close();
@@ -137,7 +137,7 @@ public class ReadAndWrite {
         try {
             FileWriter fileWriter = new FileWriter(path, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(facility.toString()+"-0");
+            bufferedWriter.write(facility.toString()+"#"+0);
             bufferedWriter.newLine();
             bufferedWriter.close();
         } catch (IOException e) {
@@ -191,9 +191,11 @@ public class ReadAndWrite {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (String key : facilityMap.keySet()) {
                 if (key.equals(facility)){
-                    bufferedWriter.write(key+"-"+facilityMap.get(key)+1);
+
+                    bufferedWriter.write(key+"#"+(facilityMap.get(key)+1));
+                    bufferedWriter.newLine();
                 }else{
-                    bufferedWriter.write(key+"-"+facilityMap.get(key));
+                    bufferedWriter.write(key+"#"+facilityMap.get(key));
                     bufferedWriter.newLine();
                 }
             }

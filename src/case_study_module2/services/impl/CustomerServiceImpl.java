@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setId(RegexInput.returnOnlyNumber());
 
         System.out.print("Enter name customer: ");
-        customer.setName(scanner.nextLine());
+        customer.setName(RegexInput.returnString());
 
         System.out.print("Enter date of birth customer: ");
         customer.setBirthDay(RegexInput.returnBirthDay());

@@ -4,6 +4,7 @@ import case_study_module2.services.impl.BookingServiceImpl;
 import case_study_module2.services.impl.CustomerServiceImpl;
 import case_study_module2.services.impl.EmployeeServiceImpl;
 import case_study_module2.services.impl.FacilityServiceImpl;
+import case_study_module2.utils.regex.RegexInput;
 
 import java.util.Scanner;
 
@@ -22,7 +23,6 @@ public class FuramaController {
 
     public static void displayMainMenu() {
         boolean check = true;
-        int choose = 0;
         while (check) {
             System.out.println("1. Employee Management");
             System.out.println("2. Customer Management");
@@ -30,15 +30,7 @@ public class FuramaController {
             System.out.println("4. Booking Management");
             System.out.println("5. Promotion Management");
             System.out.println("0. Exit");
-            while (true){
-                try {
-                    choose = Integer.parseInt(scanner.nextLine());
-                    break;
-                }catch (NumberFormatException e){
-                    System.err.println("Wrong format, please re-enter");
-                }
-            }
-            switch (choose) {
+            switch (RegexInput.returnOnlyNumber()) {
                 case 1:
                     displayEmployeeMenu();
                     break;
@@ -58,7 +50,7 @@ public class FuramaController {
                     check = false;
                     break;
                 default:
-                    System.out.println("error");
+                    System.out.println("not on the menu");
             }
         }
     }
@@ -66,22 +58,13 @@ public class FuramaController {
     public static void displayEmployeeMenu() {
 
         boolean check = true;
-        int choose = 0;
         while (check) {
             System.out.println("1. Display list employees");
             System.out.println("2. Add new employee");
             System.out.println("3. Edit employee");
             System.out.println("4. Return main menu");
-            while (true){
-                try {
-                    choose = Integer.parseInt(scanner.nextLine());
-                    break;
-                }catch (NumberFormatException e){
-                    System.err.println("Wrong format, please re-enter");
-                }
-            }
 
-            switch (choose) {
+            switch (RegexInput.returnOnlyNumber()) {
                 case 1:
                     employeeService.display();
                     break;
@@ -108,7 +91,7 @@ public class FuramaController {
             System.out.println("3. Edit customer");
             System.out.println("4. Return main menu");
 
-            switch (Integer.parseInt(scanner.nextLine())) {
+            switch (RegexInput.returnOnlyNumber()) {
                 case 1:
                     customerService.display();
                     break;
@@ -130,21 +113,12 @@ public class FuramaController {
     public static void displayFacilityMenu() {
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
         boolean check = true;
-        int choose = 0;
         while (check) {
             System.out.println("1. Display list facility");
             System.out.println("2. Add new facility");
             System.out.println("3. Display list facility maintenance");
             System.out.println("4. Return main menu");
-            while (true){
-                try {
-                    choose = Integer.parseInt(scanner.nextLine());
-                    break;
-                }catch (NumberFormatException e){
-                    System.err.println("Wrong format, please re-enter");
-                }
-            }
-            switch (choose) {
+            switch (RegexInput.returnOnlyNumber()) {
                 case 1:
                     facilityService.displayFacility();
                     break;
@@ -158,13 +132,12 @@ public class FuramaController {
                     check = false;
                     break;
                 default:
-                    System.out.println("error");
+                    System.out.println("Not on the menu");
             }
         }
     }
 
     public static void addNewFacilitySubMenu() {
-        FacilityServiceImpl facilityService = new FacilityServiceImpl();
         boolean check = true;
         while (check) {
             System.out.println("1. Add new Villa");
@@ -172,7 +145,7 @@ public class FuramaController {
             System.out.println("3. Add new Room");
             System.out.println("4. Back to menu");
 
-            switch (Integer.parseInt(scanner.nextLine())) {
+            switch (RegexInput.returnOnlyNumber()) {
                 case 1:
                     facilityService.addNewVilla();
                     break;
@@ -186,7 +159,7 @@ public class FuramaController {
                     check = false;
                     break;
                 default:
-                    System.out.println("error");
+                    System.out.println("Not on the menu");
             }
         }
     }
@@ -201,7 +174,7 @@ public class FuramaController {
             System.out.println("5. Edit contracts");
             System.out.println("6. Return main menu");
 
-            switch (Integer.parseInt(scanner.nextLine())) {
+            switch (RegexInput.returnOnlyNumber()) {
                 case 1:
                     bookingService.addBooking();
                     break;
@@ -221,7 +194,7 @@ public class FuramaController {
                     check = false;
                     break;
                 default:
-                    System.out.println("error");
+                    System.out.println("not on the menu");
             }
         }
     }
@@ -233,7 +206,7 @@ public class FuramaController {
             System.out.println("2. Display list customers get voucher");
             System.out.println("3. Return main menu");
 
-            switch (Integer.parseInt(scanner.nextLine())) {
+            switch (RegexInput.returnOnlyNumber()) {
                 case 1:
                     //displayEmployeeMenu();
                     break;
@@ -244,7 +217,7 @@ public class FuramaController {
                     check = false;
                     break;
                 default:
-                    System.out.println("error");
+                    System.out.println("not on the menu");
             }
         }
     }
