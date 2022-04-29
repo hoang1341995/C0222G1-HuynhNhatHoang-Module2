@@ -1,15 +1,18 @@
 package case_study_module2.utils;
 
-import _17_binary_file.exercise.product_management.Product;
 import case_study_module2.models.Booking;
+import case_study_module2.models.Contracts;
 import case_study_module2.models.facility.Facility;
 import case_study_module2.models.facility.House;
 import case_study_module2.models.facility.Room;
 import case_study_module2.models.facility.Villa;
-import case_study_module2.models.person.Employee;
+import case_study_module2.models.person.Customer;
 
 import java.io.*;
 import java.util.*;
+
+import static case_study_module2.services.impl.BookingServiceImpl.BOOKING_FILE;
+import static case_study_module2.services.impl.CustomerServiceImpl.getListCustomer;
 
 public class ReadAndWrite {
     public static final String EMPLOYEE_FILE = "src/case_study_module2/data/employee.csv";
@@ -160,7 +163,8 @@ public class ReadAndWrite {
                         elements[2],
                         elements[3],
                         elements[4],
-                        elements[5]));
+                        elements[5],
+                        Boolean.parseBoolean(elements[6])));
             }
             bufferedReader.close();
             return bookingList;
@@ -175,6 +179,18 @@ public class ReadAndWrite {
             FileWriter fileWriter = new FileWriter(path, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(booking.toFile());
+            bufferedWriter.newLine();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("[Write file booking] File not found");
+        }
+    }
+
+    public static void writeFileContract(Contracts contracts, String path) {
+        try {
+            FileWriter fileWriter = new FileWriter(path, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(contracts.toFile());
             bufferedWriter.newLine();
             bufferedWriter.close();
         } catch (IOException e) {
@@ -204,6 +220,33 @@ public class ReadAndWrite {
             throw new RuntimeException(e);
         }
     }
+
+    public static void reWriteFileBookingSignContract(Booking booking){
+        Set<Booking> bookingSetList = readFileBooking(BOOKING_FILE);
+        File file = new File(BOOKING_FILE);
+        file.delete();
+        BufferedWriter bufferedWriter = null;
+        for (Booking list : bookingSetList) {
+            try {
+                bufferedWriter = new BufferedWriter(new FileWriter(BOOKING_FILE,true));
+                if (Integer.parseInt(list.getIdBooking()) == Integer.parseInt(booking.getIdBooking())){
+                    bufferedWriter.write(booking.toFile());
+                }else{
+                    bufferedWriter.write(list.toFile());
+                }
+                bufferedWriter.newLine();
+                bufferedWriter.close();
+            } catch (IOException e) {
+                System.out.println("[Write file booking] File not found");
+            }
+        }
+
+
+
+
+
+    }
+
 
 
 }

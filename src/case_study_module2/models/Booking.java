@@ -8,6 +8,7 @@ public class Booking {
     private String customer;
     private String facility;
     private String typeService;
+    private boolean signContract;
 
     public Booking() {
     }
@@ -17,13 +18,23 @@ public class Booking {
                    String endDate,
                    String customer,
                    String facility,
-                   String typeService) {
+                   String typeService,
+                   boolean signContract) {
         this.idBooking = idBooking;
         this.startDate = startDate;
         this.endDate = endDate;
         this.customer = customer;
         this.facility = facility;
         this.typeService = typeService;
+        this.signContract = signContract;
+    }
+
+    public boolean isSignContract() {
+        return signContract;
+    }
+
+    public void setSignContract(boolean signContract) {
+        this.signContract = signContract;
     }
 
     public String getTypeService() {
@@ -83,6 +94,7 @@ public class Booking {
                 ", customer=" + customer +
                 ", facility=" + facility +
                 ", typeService=" + typeService +
+                ", signContract=" + signContract +
                 '}';
     }
 
@@ -92,6 +104,7 @@ public class Booking {
                 "," + endDate +
                 "," + customer +
                 "," + facility +
-                "," + typeService;
+                "," + typeService+
+                "," + signContract;
     }
 }

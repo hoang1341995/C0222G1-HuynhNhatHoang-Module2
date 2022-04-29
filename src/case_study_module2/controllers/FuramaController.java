@@ -1,9 +1,6 @@
 package case_study_module2.controllers;
 
-import case_study_module2.services.impl.BookingServiceImpl;
-import case_study_module2.services.impl.CustomerServiceImpl;
-import case_study_module2.services.impl.EmployeeServiceImpl;
-import case_study_module2.services.impl.FacilityServiceImpl;
+import case_study_module2.services.impl.*;
 import case_study_module2.utils.regex.RegexInput;
 
 import java.util.Scanner;
@@ -14,6 +11,7 @@ public class FuramaController {
     static CustomerServiceImpl customerService = new CustomerServiceImpl();
     static FacilityServiceImpl facilityService = new FacilityServiceImpl();
     static BookingServiceImpl bookingService = new BookingServiceImpl();
+    static ContractServiceImpl contractService = new ContractServiceImpl();
 
 
 
@@ -182,13 +180,13 @@ public class FuramaController {
                     bookingService.displayListBooking();
                     break;
                 case 3:
-                    //displayFacilityMenu();
+                    contractService.createNewContract();
                     break;
                 case 4:
-                    //displayFacilityMenu();
+                    contractService.displayListContract();
                     break;
                 case 5:
-                    //displayFacilityMenu();
+                    contractService.editContract();
                     break;
                 case 6:
                     check = false;

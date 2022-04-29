@@ -31,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setName(scanner.nextLine());
 
         System.out.print("Enter date of birth employee: ");
-        employee.setBirthDay(RegexInput.returnBirthDay());
+        employee.setBirthDay(RegexInput.returnDate());
 
         System.out.println("Enter gender employee:\n" +
                 "1. Male\n" +
@@ -110,7 +110,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                         break;
                     case 2:
                         System.out.print("Enter new date of birth Employee: ");
-                        employees.setBirthDay(RegexInput.returnBirthDay());
+                        employees.setBirthDay(RegexInput.returnDate());
                         System.out.println("Edit date of birth employee successful");
                         break;
                     case 3:

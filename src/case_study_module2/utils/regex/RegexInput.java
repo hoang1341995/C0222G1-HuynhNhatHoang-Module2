@@ -1,21 +1,17 @@
 package case_study_module2.utils.regex;
 
-import case_study_module2.models.Booking;
-import case_study_module2.utils.BookingComparator;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
-import java.util.TreeSet;
 import java.util.regex.Pattern;
 
 import static case_study_module2.controllers.FuramaController.scanner;
 
 public class RegexInput {
-    public static final String REGEX_BIRTHDAY = "^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$"; //not ok
     public static final String REGEX_PHONE_NUMBER = "^(84|0[3|5|7|8|9])+([0-9]{8})$";
     public static final String REGEX_EMAIL = "^[A-Za-z0-9+_.-]+@(.+)$";
     public static final String ID_VILLA = "^SVVL-[0-9]{4}$";
@@ -23,27 +19,15 @@ public class RegexInput {
     public static final String ID_ROOM = "^SVRO-[0-9]{4}$";
     public static final String REGEX_STR = "^([A-Za-z]+)((\\\\s{1}[A-Za-z]+){1,})$";
 
-    public static String returnBirthDay() {
-//        String birthDay;
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
-//        LocalDate localDate1 = LocalDate.parse(dateOfBirth, formatter);
-//        localDate2.format(formatter);
-//        while (true){
-//
-//        }
-
-
-
-
-
-        String birthDay;
-        while (true) {
-            birthDay = scanner.nextLine();
-            if (Pattern.matches(REGEX_BIRTHDAY,birthDay)){
+    public static String returnDate() {
+        while (true){
+            try {
+                String birthDay = scanner.nextLine();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
+                LocalDate testDay = LocalDate.parse(birthDay, formatter);
                 return birthDay;
-            } else {
-                System.out.println(birthDay);
-                System.err.println("Wrong format birthday, please re-enter");
+            }catch (DateTimeParseException e){
+                System.err.println("Wrong formar date, please re-enter");
             }
         }
     }
@@ -118,12 +102,12 @@ public class RegexInput {
         }
     }
 
-    public static int returnIdBooking(){
+    public static int returnId(String path){
         try {
-            File file = new File("src/case_study_module2/data/booking.csv");
+            File file = new File(path);
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String line = "";
-            int max = 1;
+            int max = 0;
             String[] elements;
             while ((line = bufferedReader.readLine()) != null) {
                 elements = line.split(",");

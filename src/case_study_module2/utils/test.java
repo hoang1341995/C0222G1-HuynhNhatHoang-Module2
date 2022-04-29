@@ -11,7 +11,7 @@ public class test {
     public static void main(String[] args) {
         String birthDay = "11/02/2022";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
-        LocalDate localDate1 = LocalDate.parse(birthDay, formatter);
+        LocalDate localDate = LocalDate.parse(birthDay, formatter);
         System.out.println(birthDay);
     }
 

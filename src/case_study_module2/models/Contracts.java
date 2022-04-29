@@ -5,17 +5,17 @@ public class Contracts {
     private String idBooking;
     private double deposit;
     private double totalPayment;
-    private int idcustomer;
+    private String customer;
 
     public Contracts() {
     }
 
-    public Contracts(int idContract, String idBooking, double deposit, double totalPayment, int idcustomer) {
+    public Contracts(int idContract, String idBooking, double deposit, double totalPayment, String customer) {
         this.idContract = idContract;
         this.idBooking = idBooking;
         this.deposit = deposit;
         this.totalPayment = totalPayment;
-        this.idcustomer = idcustomer;
+        this.customer = customer;
     }
 
     public int getIdContract() {
@@ -50,12 +50,12 @@ public class Contracts {
         this.totalPayment = totalPayment;
     }
 
-    public int getIdcustomer() {
-        return idcustomer;
+    public String getCustomer() {
+        return customer;
     }
 
-    public void setIdcustomer(int idcustomer) {
-        this.idcustomer = idcustomer;
+    public void setcustomer(String customer) {
+        this.customer = customer;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Contracts {
                 ", idBooking='" + idBooking + '\'' +
                 ", deposit=" + deposit +
                 ", totalPayment=" + totalPayment +
-                ", idcustomer=" + idcustomer +
+                ", customer=" + customer +
                 '}';
     }
 
@@ -74,6 +74,6 @@ public class Contracts {
                 "," + idBooking +
                 "," + deposit +
                 "," + totalPayment +
-                "," + idcustomer;
+                "," + customer;
     }
 }

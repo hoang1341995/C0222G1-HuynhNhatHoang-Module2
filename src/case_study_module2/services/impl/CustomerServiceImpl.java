@@ -29,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setName(RegexInput.returnString());
 
         System.out.print("Enter date of birth customer: ");
-        customer.setBirthDay(RegexInput.returnBirthDay());
+        customer.setBirthDay(RegexInput.returnDate());
 
         System.out.println("Enter gender customer:\n" +
                 "1. Male\n" +
@@ -84,7 +84,7 @@ public class CustomerServiceImpl implements CustomerService {
                 while (true){
                     try {
                         System.out.print("Choose section you want to edit: ");
-                        choose = Integer.parseInt(scanner.nextLine());
+                        choose = RegexInput.returnOnlyNumber();
                         break;
                     }catch (NumberFormatException e){
                         System.err.println("Wrong, please re-enter.");
@@ -98,7 +98,7 @@ public class CustomerServiceImpl implements CustomerService {
                         break;
                     case 2:
                         System.out.print("Enter new date of birth customer: ");
-                        customers.setBirthDay(RegexInput.returnBirthDay());
+                        customers.setBirthDay(RegexInput.returnDate());
                         System.out.println("Edit date of birth customer successful");
                         break;
                     case 3:

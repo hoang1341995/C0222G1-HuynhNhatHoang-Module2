@@ -13,22 +13,21 @@ import java.util.Set;
 import static case_study_module2.controllers.FuramaController.scanner;
 import static case_study_module2.services.impl.CustomerServiceImpl.getListCustomer;
 import static case_study_module2.utils.ReadAndWrite.readFileBooking;
-import static case_study_module2.utils.regex.RegexInput.returnIdBooking;
+import static case_study_module2.utils.regex.RegexInput.returnId;
 
 public class BookingServiceImpl implements BookingService {
     public static final String BOOKING_FILE = "src/case_study_module2/data/booking.csv";
     public static final String CONTRACT_FILE = "src/case_study_module2/data/contract.csv";
-     Set<Booking> bookingSet = readFileBooking(BOOKING_FILE);
     static List<Customer> customerList = getListCustomer();
 
     @Override
     public void addBooking() {
-        String idBooking = String.valueOf(returnIdBooking());
+        String idBooking = String.valueOf(returnId(BOOKING_FILE));
         System.out.println("Enter start date: ");
-        String startDate = scanner.nextLine();
+        String startDate = RegexInput.returnDate();
 
         System.out.println("Enter end date: ");
-        String endDate = scanner.nextLine();
+        String endDate = RegexInput.returnDate();
 
         System.out.println("Enter id customer: ");
         String idCustomer = chooseIDCustomer();
@@ -40,8 +39,8 @@ public class BookingServiceImpl implements BookingService {
         System.out.println("Enter type service: ");
         String typeService = scanner.nextLine();
 
-        Booking booking = new Booking(idBooking,startDate,endDate,idCustomer,nameFacility,typeService);
-        bookingSet.add(booking);
+        Booking booking = new Booking(idBooking,startDate,endDate,idCustomer,nameFacility,typeService,false);
+        //bookingSet.add(booking);
         ReadAndWrite.writeFileBooking(booking,BOOKING_FILE);
         ReadAndWrite.editUsesOfFacility(idFacility.toString());
         System.out.println("Add new booking successful");
