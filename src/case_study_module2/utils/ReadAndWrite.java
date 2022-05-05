@@ -6,14 +6,11 @@ import case_study_module2.models.facility.Facility;
 import case_study_module2.models.facility.House;
 import case_study_module2.models.facility.Room;
 import case_study_module2.models.facility.Villa;
-import case_study_module2.models.person.Customer;
 
 import java.io.*;
 import java.util.*;
 
 import static case_study_module2.services.impl.BookingServiceImpl.BOOKING_FILE;
-import static case_study_module2.services.impl.CustomerServiceImpl.getListCustomer;
-
 public class ReadAndWrite {
     public static final String EMPLOYEE_FILE = "src/case_study_module2/data/employee.csv";
     public static final String CUSTOMER_FILE = "src/case_study_module2/data/customer.csv";
@@ -111,7 +108,7 @@ public class ReadAndWrite {
             String line;
             String[] facility;
             while ((line = bufferedReader.readLine()) != null) {
-                facility = line.split("#"); ///{room}-0
+                facility = line.split("#"); ///{room}#0
                 list.put(facility[0], Integer.parseInt(facility[1]));
             }
             bufferedReader.close();
@@ -207,7 +204,6 @@ public class ReadAndWrite {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (String key : facilityMap.keySet()) {
                 if (key.equals(facility)){
-
                     bufferedWriter.write(key+"#"+(facilityMap.get(key)+1));
                     bufferedWriter.newLine();
                 }else{

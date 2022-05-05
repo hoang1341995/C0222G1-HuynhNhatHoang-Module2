@@ -6,7 +6,6 @@ public interface FacilityService {
 
     void displayMaintain();
 
-
     void addNewVilla();
 
     void addNewHouse();

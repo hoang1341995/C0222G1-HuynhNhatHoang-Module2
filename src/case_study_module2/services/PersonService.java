@@ -1,6 +1,6 @@
 package case_study_module2.services;
 
-public interface EmployeeService extends Service{
+public interface PersonService{
     void addNew();
     void edit();
     void display();

@@ -1,7 +1,7 @@
 package case_study_module2.services.impl;
 
 import case_study_module2.models.person.Employee;
-import case_study_module2.services.EmployeeService;
+import case_study_module2.services.PersonService;
 import case_study_module2.utils.ReadAndWrite;
 import case_study_module2.utils.regex.RegexInput;
 import case_study_module2.utils.regex.RegexInputEmployee;
@@ -16,15 +16,37 @@ import java.util.Scanner;
 
 import static case_study_module2.utils.ReadAndWrite.EMPLOYEE_FILE;
 
-public class EmployeeServiceImpl implements EmployeeService {
+public class EmployeeServiceImpl implements PersonService {
      List<Employee> employeeList = getListEmployee();
     private static Scanner scanner = new Scanner(System.in);
+
+    public int checkIdEmployee(){
+        employeeList = getListEmployee();
+        int id;
+        boolean check = false;
+        while (true){
+            id = RegexInput.returnOnlyNumber();
+            for (Employee employee: employeeList){
+                if (employee.getId() == id){
+                    check = true;
+                    break;
+                }else {
+                    check = false;
+                }
+            }
+            if (check){
+                System.err.println("id already exists, please re-enter");
+            }else{
+                return id;
+            }
+        }
+    }
 
     @Override
     public void addNew() {
         Employee employee = new Employee();
         System.out.print("Enter ID employee: ");
-        employee.setId(RegexInput.returnOnlyNumber());
+        employee.setId(checkIdEmployee());
 
         System.out.print("Enter name employee: ");
 
@@ -73,6 +95,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void edit() {
+        employeeList = getListEmployee();
         display();
         int idEdit = 0;
         System.out.print("Enter id of Employee you want edit: ");
@@ -162,6 +185,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public  void reWriteListEmployee(){
+        employeeList = getListEmployee();
         try {
             File file = new File(EMPLOYEE_FILE);
             file.delete();
@@ -178,9 +202,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void display() {
-        List<Employee> list = getListEmployee();
+        employeeList = getListEmployee();
         System.out.println("<<Employee List>>");
-        for (Employee employees : list) {
+        for (Employee employees : employeeList) {
             System.out.println(employees.toString());
         }
 

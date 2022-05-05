@@ -31,7 +31,6 @@ public class FacilityServiceImpl implements FacilityService {
 
     }
 
-
     @Override
     public void addNewVilla() {
         Villa villa = new Villa();

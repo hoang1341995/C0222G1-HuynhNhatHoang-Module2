@@ -1,2 +1,2 @@
 Villa{ id='SVVL-0123' nameService='villa0123', useArea=1.0, price=1.0, maxPeople=1, rentalType='1' roomStandard='1', poolArea=1.0, floor=1}#13
-House{ id='SVHO-1234' nameService='villa1234', useArea=1.0, price=10000.0, maxPeople=10, rentalType='day' roomStandard='day', floor=1}#2
+House{ id='SVHO-1234' nameService='villa1234', useArea=1.0, price=10000.0, maxPeople=10, rentalType='day' roomStandard='day', floor=1}#3

@@ -11,6 +11,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -28,16 +30,29 @@ public class ContractServiceImpl implements ContactService {
         Contracts contracts = new Contracts();
         BookingServiceImpl bookingService = new BookingServiceImpl();
         bookingService.displayListBooking();
+
         contracts.setIdContract(returnId(CONTRACT_FILE));
+
         System.out.println("choose id booking you want sign contract");
         Booking booking = findBookingById();
+
         contracts.setIdBooking(booking.getIdBooking());
+
         System.out.println("Enter repayment amount");
         contracts.setDeposit(RegexInput.returnOnlyNumber());
+
         System.out.println("Enter payment amount");
         contracts.setTotalPayment(RegexInput.returnOnlyNumber());
+
         contracts.setcustomer(booking.getCustomer());
         booking.setSignContract(true);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        LocalDate today = LocalDate.now();
+        contracts.setDate(today.format(formatter));
+
+        contracts.setStatusDiscount("false");
+
         ReadAndWrite.writeFileContract(contracts,CONTRACT_FILE);
         reWriteFileBookingSignContract(booking);
         System.out.println("Add new Contract successful");
@@ -88,7 +103,7 @@ public class ContractServiceImpl implements ContactService {
                     lists[1],
                     Double.parseDouble(lists[2]),
                     Double.parseDouble(lists[3]),
-                    lists[4]));
+                    lists[4],lists[5],lists[6]));
         }
         return contractsList;
     }

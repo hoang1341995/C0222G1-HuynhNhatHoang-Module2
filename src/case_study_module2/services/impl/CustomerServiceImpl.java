@@ -1,7 +1,8 @@
 package case_study_module2.services.impl;
 
 import case_study_module2.models.person.Customer;
-import case_study_module2.services.CustomerService;
+import case_study_module2.models.person.Employee;
+import case_study_module2.services.PersonService;
 import case_study_module2.utils.ReadAndWrite;
 import case_study_module2.utils.regex.RegexInput;
 import case_study_module2.utils.regex.RegexInputCustomer;
@@ -16,20 +17,43 @@ import java.util.Scanner;
 
 import static case_study_module2.utils.ReadAndWrite.CUSTOMER_FILE;
 
-public class CustomerServiceImpl implements CustomerService {
+public class CustomerServiceImpl implements PersonService {
     private Scanner scanner = new Scanner(System.in);
     List<Customer> customerList = getListCustomer();
+
+    public int checkIdCustomer(){
+        customerList = getListCustomer();
+        int id;
+        boolean check = false;
+        while (true){
+            id = RegexInput.returnOnlyNumber();
+            for (Customer customer: customerList){
+                if (customer.getId() == id){
+                    check = true;
+                    break;
+                }else {
+                    check = false;
+                }
+            }
+            if (check){
+                System.err.println("id already exists, please re-enter");
+            }else{
+                return id;
+            }
+        }
+    }
+
     @Override
     public void addNew() {
         Customer customer = new Customer();
         System.out.print("Enter ID customer: ");
-        customer.setId(RegexInput.returnOnlyNumber());
+        customer.setId(checkIdCustomer());
 
         System.out.print("Enter name customer: ");
         customer.setName(RegexInput.returnString());
 
         System.out.print("Enter date of birth customer: ");
-        customer.setBirthDay(RegexInput.returnDate());
+        customer.setBirthDay(RegexInput.checkAgeCustomer());
 
         System.out.println("Enter gender customer:\n" +
                 "1. Male\n" +
@@ -62,6 +86,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void edit() {
+        customerList = getListCustomer();
         display();
         int idEdit = 0;
         System.out.print("Enter id of Customer you want edit: ");
@@ -144,6 +169,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     public  void reWriteListCustomer(){
+        customerList = getListCustomer();
         try {
             File file = new File(CUSTOMER_FILE);
             file.delete();
@@ -160,13 +186,14 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void display() {
+        customerList = getListCustomer();
         List<Customer> customerList = getListCustomer();
-        System.out.println("<<Customer List>>");
         for (Customer customers: customerList){
             System.out.println(customers.toString());
         }
 
     }
+
     public static List<Customer> getListCustomer(){
         List<Customer> customerList = new ArrayList<>();
         List<String[]> list = ReadAndWrite.readFile(CUSTOMER_FILE);

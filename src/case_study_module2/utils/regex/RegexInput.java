@@ -1,9 +1,12 @@
 package case_study_module2.utils.regex;
 
+import case_study_module2.utils.exception.DateTimeException;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
@@ -17,22 +20,61 @@ public class RegexInput {
     public static final String ID_VILLA = "^SVVL-[0-9]{4}$";
     public static final String ID_HOUSE = "^SVHO-[0-9]{4}$";
     public static final String ID_ROOM = "^SVRO-[0-9]{4}$";
-    public static final String REGEX_STR = "^([A-Za-z]+)((\\\\s{1}[A-Za-z]+){1,})$";
+    public static final String REGEX_STR = "^[A-Z]+[\\\\w]{1,}+$";
 
     public static String returnDate() {
+        String birthDay;
         while (true){
             try {
-                String birthDay = scanner.nextLine();
+                birthDay = scanner.nextLine();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
                 LocalDate testDay = LocalDate.parse(birthDay, formatter);
                 return birthDay;
             }catch (DateTimeParseException e){
-                System.err.println("Wrong formar date, please re-enter");
+                System.err.println("Wrong format date, please re-enter");
             }
         }
     }
 
+    public static String checkAgeCustomer(){
+        String birthDay;
+        while (true){
+            try {
+                birthDay = scanner.nextLine();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
+                LocalDate testDay = LocalDate.parse(birthDay, formatter);
+                LocalDate today = LocalDate.now();
+                LocalDate birthday = LocalDate.of(testDay.getYear(), testDay.getMonth(), testDay.getDayOfMonth());
+                Period period = Period.between(birthday, today);
+                if (period.getYears() < 18 || period.getYears() > 100){
+                    throw new DateTimeException("Customers must be over 18 years old and under 100 years old");
+                }else {
+                    return birthDay;
+                }
+            }catch (DateTimeParseException e){
+                System.err.println("Wrong format date, please re-enter");
+            }catch (DateTimeException e){
+                System.err.println(e.getMessage());
+            }
 
+        }
+    }
+
+    public static String returnMonthAndYear(){
+        String monthAndYear;
+        while (true){
+            try {
+                monthAndYear = scanner.nextLine();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+                LocalDate testDay = LocalDate.parse("01/"+monthAndYear, formatter);
+                //System.out.println(testDay.format(formatter));
+                return monthAndYear;
+            }catch (DateTimeParseException e){
+                System.err.println("Wrong format date, please re-enter. example: 01/2000");
+            }
+        }
+
+    }
 
     public static String returnEmail() {
         String email;
@@ -125,12 +167,12 @@ public class RegexInput {
         String str;
         while (true){
             str = scanner.nextLine();
-            if (Pattern.matches(REGEX_STR,str)){
-                return str;
-            }else{
-                System.err.println("Wrong format name, re-enter");
-            }
-
+//            if (Pattern.matches(REGEX_STR,str)){
+//                return str;
+//            }else{
+//                System.err.println("Wrong format name, re-enter");
+//            }
+            return str;
         }
     }
 

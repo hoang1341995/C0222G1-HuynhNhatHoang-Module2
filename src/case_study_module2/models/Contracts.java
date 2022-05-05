@@ -6,16 +6,46 @@ public class Contracts {
     private double deposit;
     private double totalPayment;
     private String customer;
+    private String date;
+    private String statusDiscount;
 
     public Contracts() {
     }
 
-    public Contracts(int idContract, String idBooking, double deposit, double totalPayment, String customer) {
+    public Contracts(int idContract,
+                     String idBooking,
+                     double deposit,
+                     double totalPayment,
+                     String customer,
+                     String date,
+                     String statusDiscount) {
         this.idContract = idContract;
         this.idBooking = idBooking;
         this.deposit = deposit;
         this.totalPayment = totalPayment;
         this.customer = customer;
+        this.date = date;
+        this.statusDiscount = statusDiscount;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getStatusDiscount() {
+        return statusDiscount;
+    }
+
+    public void setStatusDiscount(String statusDiscount) {
+        this.statusDiscount = statusDiscount;
     }
 
     public int getIdContract() {
@@ -66,6 +96,8 @@ public class Contracts {
                 ", deposit=" + deposit +
                 ", totalPayment=" + totalPayment +
                 ", customer=" + customer +
+                ", date=" + date +
+                ", statusDiscount=" + statusDiscount +
                 '}';
     }
 
@@ -74,6 +106,8 @@ public class Contracts {
                 "," + idBooking +
                 "," + deposit +
                 "," + totalPayment +
-                "," + customer;
+                "," + customer+
+                "," + date +
+                "," + statusDiscount;
     }
 }

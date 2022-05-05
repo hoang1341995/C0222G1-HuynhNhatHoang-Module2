@@ -12,6 +12,7 @@ public class FuramaController {
     static FacilityServiceImpl facilityService = new FacilityServiceImpl();
     static BookingServiceImpl bookingService = new BookingServiceImpl();
     static ContractServiceImpl contractService = new ContractServiceImpl();
+    static PromotionServiceImpl promotionService = new PromotionServiceImpl();
 
 
 
@@ -48,7 +49,7 @@ public class FuramaController {
                     check = false;
                     break;
                 default:
-                    System.out.println("not on the menu");
+                    System.err.println("not on the menu");
             }
         }
     }
@@ -76,7 +77,7 @@ public class FuramaController {
                     check = false;
                     break;
                 default:
-                    System.out.println("Not on the menu");
+                    System.err.println("Not on the menu");
             }
         }
     }
@@ -103,7 +104,7 @@ public class FuramaController {
                     check = false;
                     break;
                 default:
-                    System.out.println("Not on the menu");
+                    System.err.println("Not on the menu");
             }
         }
     }
@@ -130,7 +131,7 @@ public class FuramaController {
                     check = false;
                     break;
                 default:
-                    System.out.println("Not on the menu");
+                    System.err.println("Not on the menu");
             }
         }
     }
@@ -157,7 +158,7 @@ public class FuramaController {
                     check = false;
                     break;
                 default:
-                    System.out.println("Not on the menu");
+                    System.err.println("Not on the menu");
             }
         }
     }
@@ -206,10 +207,10 @@ public class FuramaController {
 
             switch (RegexInput.returnOnlyNumber()) {
                 case 1:
-                    //displayEmployeeMenu();
+                    promotionService.display();
                     break;
                 case 2:
-                    //displayCustomerMenu();
+                    promotionService.getVoucher();
                     break;
                 case 3:
                     check = false;
