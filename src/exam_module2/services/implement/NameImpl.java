@@ -2,20 +2,9 @@ package exam_module2.services.implement;
 
 import exam_module2.services.NameService;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static exam_module2.utils.ReadAndWrite.readFile;
 
 public class NameImpl implements NameService {
 
-
-
-//    public static List<String[]> getNameList(){
-//        List<String[]> list = readFile("link.csv");
-//
-//
-//    }
 
     @Override
     public void display() {
@@ -36,4 +25,21 @@ public class NameImpl implements NameService {
     public void delete() {
 
     }
+
+    /*
+        public static List<Subject> getSubjectList(){
+        List<Subject> subjects = new ArrayList<>();
+        List<String[]> list = ReadAndWrite.read(SUBJECT_PATH);
+        for (String[] lists : list){
+            subjects.add(new Subject(lists[0],
+                    lists[1],
+                    Double.parseDouble(lists[2]),
+                    lists[3],Integer.parseInt(lists[4])));
+        }
+        return subjects;
+    }
+     */
+
+
+
 }

@@ -21,7 +21,6 @@ public class test {
 //
 //        System.out.println(todayFormat);
         //System.out.println(checkAgeCustomer());
-
 //        String year = scanner.nextLine();
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
 //        LocalDate testDay = LocalDate.parse("01/01/"+year, formatter);

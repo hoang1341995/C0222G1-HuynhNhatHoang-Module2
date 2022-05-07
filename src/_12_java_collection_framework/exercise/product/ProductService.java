@@ -118,8 +118,7 @@ public class ProductService {
         }
     }
     public static void listDown(){
-        ComparatorDown listDown;
-        listDown = new ComparatorDown();
+        ComparatorDown listDown = new ComparatorDown();
         Collections.sort(list,listDown);
         for (Product product:list){
             System.out.println(product.toString());
