@@ -1,7 +1,7 @@
 package exam_module2.utils;
 
 
-import exam_module2.models.Customer;
+import exam_module2.models.Bank;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -9,7 +9,9 @@ import java.util.List;
 
 
 public class ReadAndWrite {
-    public static final String CUSTOMER_PATH = "src/exam_module2/data/customer.csv";
+
+    public static final String BANK_ACCOUNTS_PATH = "src/exam_module2/data/bank_accounts.csv";
+
     public static void write(String path, String line) {
         File file = new File(path);
         if (!file.exists()) {
@@ -53,14 +55,16 @@ public class ReadAndWrite {
         return list;
     }
 
-    public static void reWriteList(List<Customer> newList, String path){
+    public static void reWriteList(String codeAccountRemove,List<Bank> newList, String path){
         try {
             File file = new File(path);
             file.delete();
             String line = "";
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-            for (Customer elements : newList){
-                line += elements.toFile()+"\n";
+            for (Bank elements : newList){
+                if (!elements.getCodeAccount().equals(codeAccountRemove)){
+                    line += elements.toFile()+"\n";
+                }
             }
             bufferedWriter.write(line);
             bufferedWriter.close();
@@ -70,19 +74,5 @@ public class ReadAndWrite {
     }
 
 
-
-    /**
-      public static String returnSubjectCode(){
-              String code;
-              while (true){
-                  code = scanner.nextLine();
-                  if (Pattern.matches(REGEX_CODE,code)){
-                      return code;
-                  }else{
-                      System.err.println("Wrong format subject code, please re-enter");
-                  }
-              }
-          }
-     */
 
 }
